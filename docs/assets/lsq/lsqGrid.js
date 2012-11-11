@@ -22,6 +22,7 @@ var lsqGrid = function(id, gridSetting) {
 	$.extend(setting, gridSetting);
 
 	var mainTable = null;
+	var thead = null;
 	var tbody = null;
 	var rowData = null;
 
@@ -127,8 +128,7 @@ var lsqGrid = function(id, gridSetting) {
 
 		var selectedTarget = $(tbody).find(
 				'tr.' + setting.cssClass.row.selected);
-		
-		
+
 		var selectedRecord = new Array(selectedTarget.length);
 
 		for ( var i = 0; i < selectedTarget.length; i++) {
@@ -142,66 +142,59 @@ var lsqGrid = function(id, gridSetting) {
 
 	var init = function(options) {
 
-		mainTable = document.createElement("table");
-		tbody = document.createElement("tbody");
+		// 테이블 클래스 초기화
+		tableClass = '';
 
-		var thead = document.createElement("thead");
-		var thead_tr = document.createElement("tr");
-
-		// 테이블 클래스 적용
 		for ( var i = 0; i < setting.cssClass.table.length; i++) {
-			$(mainTable).addClass(setting.cssClass.table[i]);
+			tableClass = tableClass + ' ' + setting.cssClass.table[i]
 		}
 
+		mainTable = $('<table class=\"' + tableClass + '\"></table>');
+		thead = $('<thead></thead>');
+		tbody = $('<tbody></tbody>');
+
+		var thead_tr = $('<tr></tr>');
+		// 테이블 클래스 적용
+
 		if (setting.useSelect == true) {
-			var th = $("<th style=\"width:30px\"></th>");
+
+			var th = $("<th style=\"width:30px; text-align: center;\"></th>");
 
 			if (setting.multiSelect == true) {
 
-				$(th)
-						.append(
-								$("<input type=\"checkbox\">")
-										.change(
-												function() {
+				checkBox = $(
+						'<input type=\"checkbox\">')
+						.change(
+								function() {
+									var checked = $(this).attr('checked') == true
+											|| $(this).attr('checked') == 'checked' ? true
+											: false;
 
-													var checked = $(this).attr(
-															'checked') == true
-															|| $(this).attr(
-																	'checked') == 'checked' ? true
-															: false;
+									$(tbody).find('tr').each(function() {
+										setRowSelect($(this), checked);
+									});
+								});
 
-													$(tbody)
-															.find('tr')
-															.each(
-																	function() {
-																		setRowSelect(
-																				$(this),
-																				checked);
-																	});
-
-												})).css("text-align", "center");
+				$(th).append(checkBox);
 			}
 
 			$(thead_tr).append(th);
 		}
+
+		ths = [];
 
 		// column_header 생성
 		for ( var i = 0; i < setting.columns.length; i++) {
 
 			if (setting.columns[i].hidden != true) {
 
-				var th = document.createElement("th");
-				$(th).append(setting.columns[i].header);
-				$(thead_tr).append(th);
-				$(th).width(setting.columns[i].width);
+				ths[i] = '<th>' + setting.columns[i].header + '</th>';
+				$(ths[i]).width(setting.columns[i].width);
 			}
-			// if (columns[i].hidden == true) {
-			// $(th).css('display', 'none');
-			// } else if (columns[i].width != null) {
-			// $(th).width(columns[i].width);
-			// }
 
 		}
+
+		thead_tr.append(ths.join(''));
 
 		$(thead).append(thead_tr).addClass(setting.cssClass.header);
 		$(mainTable).append(thead);

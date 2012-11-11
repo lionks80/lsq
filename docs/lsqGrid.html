@@ -24,6 +24,10 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/lsq/lsq.js"></script>
+	<script src="assets/lsq/lsqGrid.js"></script>
 
   </head>
 
@@ -86,65 +90,236 @@
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
           <li><a href="#overview"><i class="icon-chevron-right"></i> Overview</a></li>
-          <li><a href="#transitions"><i class="icon-chevron-right"></i> Transitions</a></li>
-          <li><a href="#modals"><i class="icon-chevron-right"></i> Modal</a></li>
-          <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Dropdown</a></li>
-          <li><a href="#scrollspy"><i class="icon-chevron-right"></i> Scrollspy</a></li>
-          <li><a href="#tabs"><i class="icon-chevron-right"></i> Tab</a></li>
-          <li><a href="#tooltips"><i class="icon-chevron-right"></i> Tooltip</a></li>
-          <li><a href="#popovers"><i class="icon-chevron-right"></i> Popover</a></li>
-          <li><a href="#alerts"><i class="icon-chevron-right"></i> Alert</a></li>
-          <li><a href="#buttons"><i class="icon-chevron-right"></i> Button</a></li>
-          <li><a href="#collapse"><i class="icon-chevron-right"></i> Collapse</a></li>
-          <li><a href="#carousel"><i class="icon-chevron-right"></i> Carousel</a></li>
-          <li><a href="#typeahead"><i class="icon-chevron-right"></i> Typeahead</a></li>
-          <li><a href="#affix"><i class="icon-chevron-right"></i> Affix</a></li>
+          <li><a href="#Create"><i class="icon-chevron-right"></i> Create</a></li>
+          <li><a href="#dataBind"><i class="icon-chevron-right"></i> dataBind</a></li>
+          <li><a href="#methods"><i class="icon-chevron-right"></i> Transitions</a></li>
         </ul>
       </div>
       <div class="span9">
 
 
-        <!-- Overview
+	<!-- Overview
+	================================================== -->
+	<section id="overview">
+		<div class="page-header">
+		  <h1>JavaScript in Bootstrap</h1>
+		</div>
+		
+		<h3>Individual or compiled</h3>
+		<p>Plugins can be included individually (though some have required dependencies), or all at once. Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.</p>
+		
+		<h3>Data attributes</h3>
+		<p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
+		
+		<p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
+		<pre class="prettyprint linenums">$('body').off('.data-api')</pre>
+		
+		<p>Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:</p>
+		<pre class="prettyprint linenums">$('body').off('.alert.data-api')</pre>
+		
+		<h3>Programmatic API</h3>
+		<p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
+		<pre class="prettyprint linenums">$(".btn.danger").button("toggle").addClass("fat")</pre>
+		<p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
+		<pre class="prettyprint linenums">
+		$("#myModal").modal()                       // initialized with defaults
+		$("#myModal").modal({ keyboard: false })   // initialized with no keyboard
+		$("#myModal").modal('show')                // initializes and invokes show immediately</p>
+		</pre>
+		          <p>Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
+		
+		          <h3>Events</h3>
+		          <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
+		          <p>All infinitive events provide preventDefault functionality. This provides the abililty to stop the execution of an action before it starts.</p>
+		<pre class="prettyprint linenums">
+		$('#myModal').on('show', function (e) {
+		    if (!data) return e.preventDefault() // stops modal from being shown
+		})
+		</pre>
+	</section>
+        
+<!-- TEST -->
+<script type="text/javascript">
+$(function() {
+	
+	var lsqGrid_basic = new lsqGrid('lsqGrid_basic', {
+	columns : [ {
+		header : '이름',
+		dataIndex : 'name'
+	}, {
+		header : '나이',
+		dataIndex : 'age'
+	}, {
+		header : '성별',
+		dataIndex : 'sex'
+	} ],
+	cssClass : {
+		table : [ "table", "table-bordered" ],
+		row : {
+			mouseover : "rowMouseOver",
+			selected : "rowSelected"
+		},
+
+		header : "grid-header"
+	},
+	listener : {
+		'rowClick' : function(index, record) {
+		}
+	},
+	useSelect : false,
+	multiSelect : false
+	});
+	
+	var lsqGrid_userSelect = new lsqGrid('lsqGrid_userSelect', {
+		columns : [ {
+			header : '이름',
+			dataIndex : 'name'
+		}, {
+			header : '나이',
+			dataIndex : 'age'
+		}, {
+			header : '성별',
+			dataIndex : 'sex'
+		} ],
+		cssClass : {
+			table : [ "table", "table-bordered" ],
+			row : {
+				mouseover : "rowMouseOver",
+				selected : "rowSelected"
+			},
+
+			header : "grid-header"
+		},
+		listener : {
+			'rowClick' : function(index, record) {
+			}
+		},
+		useSelect : true,
+		multiSelect : false
+		});
+	
+	var lsqGrid_multiSelect = new lsqGrid('lsqGrid_multiSelect', {
+		columns : [ {
+			header : '이름',
+			dataIndex : 'name'
+		}, {
+			header : '나이',
+			dataIndex : 'age'
+		}, {
+			header : '성별',
+			dataIndex : 'sex'
+		} ],
+		cssClass : {
+			table : [ "table", "table-bordered" ],
+			row : {
+				mouseover : "rowMouseOver",
+				selected : "rowSelected"
+			},
+
+			header : "grid-header"
+		},
+		listener : {
+			'rowClick' : function(index, record) {
+			}
+		},
+		useSelect : true,
+		multiSelect : true
+		});
+	
+	gridData1 = [ {
+		"name" : "철수",
+		"age" : 16,
+		"sex" : "M"
+	},{
+		"name" : "광철",
+		"age" : 23,
+		"sex" : "M"
+	},{
+		"name" : "영희",
+		"age" : 18,
+		"sex" : "F"
+	},{
+		"name" : "순희",
+		"age" : 16,
+		"sex" : "F"
+	},{
+		"name" : "길동",
+		"age" : 20,
+		"sex" : "M"
+	},{
+		"name" : "철호",
+		"age" : 11,
+		"sex" : "M"
+	} ];
+	
+	lsqGrid_basic.dataBind(gridData1);
+	lsqGrid_userSelect.dataBind(gridData1);
+	lsqGrid_multiSelect.dataBind(gridData1);
+
+});
+</script>
+
+        <!-- Transitions
         ================================================== -->
-        <section id="overview">
+        <section id="Create">
           <div class="page-header">
-            <h1>JavaScript in Bootstrap</h1>
+            <h1>Create Grid</h1>
           </div>
-
-          <h3>Individual or compiled</h3>
-          <p>Plugins can be included individually (though some have required dependencies), or all at once. Both <strong>bootstrap.js</strong> and <strong>bootstrap.min.js</strong> contain all plugins in a single file.</p>
-
-          <h3>Data attributes</h3>
-          <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
-
-          <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
-          <pre class="prettyprint linenums">$('body').off('.data-api')</pre>
-
-          <p>Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:</p>
-          <pre class="prettyprint linenums">$('body').off('.alert.data-api')</pre>
-
-          <h3>Programmatic API</h3>
-          <p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
-          <pre class="prettyprint linenums">$(".btn.danger").button("toggle").addClass("fat")</pre>
-          <p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
+          <h3>About create Grid</h3>
+          <p>For simple transition effects, include bootstrap-transition.js once alongside the other JS files. If you're using the compiled (or minified) bootstrap.js, there is no need to include this&mdash;it's already there.</p>
+          <h3>Use cases</h3>
+          <h2>지정한 위치에 그리드를 생성한다.</h2>
+          <p>A few examples of the transition plugin:</p>
 <pre class="prettyprint linenums">
-$("#myModal").modal()                       // initialized with defaults
-$("#myModal").modal({ keyboard: false })   // initialized with no keyboard
-$("#myModal").modal('show')                // initializes and invokes show immediately</p>
-</pre>
-          <p>Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
+var grid_board = new lsqGrid('lsqGrid_board', {
+	columns : [ {
+		header : 'id',
+		dataIndex : 'id',
+		hidden : true
+	}, {
+		header : 'Code',
+		dataIndex : 'code'
+	}, {
+		header : 'Name',
+		dataIndex : 'name'
+	} ],
+	cssClass : {
+		table : [ "table", "table-bordered" ],
+		row : {
+			mouseover : "rowMouseOver",
+			selected : "rowSelected"
+		},
 
-          <h3>Events</h3>
-          <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
-          <p>All infinitive events provide preventDefault functionality. This provides the abililty to stop the execution of an action before it starts.</p>
-<pre class="prettyprint linenums">
-$('#myModal').on('show', function (e) {
-    if (!data) return e.preventDefault() // stops modal from being shown
-})
+		header : "grid-header"
+	},
+	listener : {
+		'rowClick' : function(index, record) {
+			show_category_list();
+			pnl_board_info_show();
+
+		}
+	},
+	useSelect : true,
+	multiSelect : false
+});
 </pre>
+
+
         </section>
+        
+        <!-- dataBind
+        ================================================== -->
+        <section id="dataBind">
+          <div class="page-header">
+            <h1>databind <small>bootstrap-transition.js</small></h1>
+          </div>
+          
+          <pre class="prettyprint linenums">$(".btn.danger").button("toggle").addClass("fat")</pre>
+          <div id="lsqGrid_basic"></div>
+          <div id="lsqGrid_userSelect"></div>
+          <div id="lsqGrid_multiSelect"></div>
 
-
+        </section>
 
         <!-- Transitions
         ================================================== -->
@@ -162,7 +337,6 @@ $('#myModal').on('show', function (e) {
             <li>Fading out alerts</li>
             <li>Sliding carousel panes</li>
           </ul>
-
         </section>
 
 
@@ -1726,7 +1900,6 @@ $('[data-spy="affix"]').each(function () {
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    <script src="assets/js/jquery.js"></script>
     <script src="assets/js/google-code-prettify/prettify.js"></script>
     <script src="assets/js/bootstrap-transition.js"></script>
     <script src="assets/js/bootstrap-alert.js"></script>
