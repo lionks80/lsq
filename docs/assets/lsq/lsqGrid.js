@@ -10,6 +10,8 @@ var lsqGrid = function(id, gridSetting) {
 		multiSelect : false,
 		listener : {
 			rowClick : function(rowIdx, record) {
+			},
+			selectChange : function(selectedRecords) {
 			}
 		}
 	};
@@ -36,26 +38,48 @@ var lsqGrid = function(id, gridSetting) {
 
 	}
 
+	function privateSelectChange() {
+
+		var selectedTargets = $(tbody).find('tr.' + setting.cssRowSelected);
+
+		var selectedRecords = new Array(selectedTargets.length);
+
+		for ( var i = 0; i < selectedTargets.length; i++) {
+			selectedRecords[i] = rowData[$(selectedTargets[i]).attr('rowIdx')];
+		}
+
+		setting.listener.selectChange(selectedRecords);
+
+	}
+
 	function privateRowClick() {
+
+		selectChange = false;
 
 		if (setting.useSelect == true) {
 
 			if (setting.multiSelect == true) {
+
+				// 멀티 셀렉트인 경우
 				if ($(this).hasClass(setting.cssRowSelected) == true) {
 					setRowSelect($(this), false);
 				} else {
 					setRowSelect($(this), true);
 				}
 
+				selectChange = true;
+
 			} else {
-				if ($(this).hasClass(setting.cssRowSelected) == true) {
-					setRowSelect($(this), true);
-				} else {
+				// 싱글 셀렉트인 경우
+				if ($(this).hasClass(setting.cssRowSelected) != true) {
+					// setRowSelect($(this), true);
+					// } else {
 					$(tbody).find('tr.' + setting.cssRowSelected).each(
 							function() {
 								setRowSelect($(this), false);
 							});
 					setRowSelect($(this), true);
+					selectChange = true;
 				}
 			}
 		}
@@ -65,6 +89,10 @@ var lsqGrid = function(id, gridSetting) {
 			var record = rowData[rowIdx];
 
 			setting.listener.rowClick(rowIdx, record);
+		}
+
+		if (selectChange == true) {
+			privateSelectChange();
 		}
 	}
 
@@ -83,17 +111,21 @@ var lsqGrid = function(id, gridSetting) {
 
 			if (setting.multiSelect == true) {
 
-				checkBox = $('<input type=\"checkbox\">')
-						.change(
-								function() {
-									var checked = $(this).attr('checked') == true
-											|| $(this).attr('checked') == 'checked' ? true
-											: false;
+				fnCheckBoxChange = function() {
 
-									$(tbody).find('tr').each(function() {
-										setRowSelect($(this), checked);
-									});
-								});
+					var checked = $(this).attr('checked') == true
+							|| $(this).attr('checked') == 'checked' ? true
+							: false;
+
+					$(tbody).find('tr').each(function() {
+						setRowSelect($(this), checked);
+					});
+
+					privateSelectChange();
+				}
+
+				checkBox = $('<input type=\"checkbox\">').change(
+						fnCheckBoxChange);
 
 				$(th).append(checkBox);
 			}
@@ -145,13 +177,13 @@ var lsqGrid = function(id, gridSetting) {
 
 				if (setting.columns[j].hidden != true) {
 					var td = document.createElement("td");
-					
+
 					if (setting.columns[j].render != null) {
 						$(td).append(setting.columns[j].render(rowData[i]));
 					} else {
 						$(td).append(rowData[i][setting.columns[j].dataIndex]);
 					}
-					
+
 					$(tr).append(td);
 				}
 
@@ -161,12 +193,6 @@ var lsqGrid = function(id, gridSetting) {
 				// }
 			}
 
-			$(tr).mouseover(function() {
-				$(this).addClass(setting.cssClass.row.mouseover);
-			});
-			$(tr).mouseout(function() {
-				$(this).removeClass(setting.cssClass.row.mouseover);
-			});
 			$(tr).click(privateRowClick);
 
 			$(tbody).append(tr);
@@ -182,8 +208,7 @@ var lsqGrid = function(id, gridSetting) {
 
 	this.getSelectedRecords = function() {
 
-		var selectedTarget = $(tbody).find(
-				'tr.' + setting.cssRowSelected);
+		var selectedTarget = $(tbody).find('tr.' + setting.cssRowSelected);
 
 		var selectedRecord = new Array(selectedTarget.length);
 
@@ -192,8 +217,6 @@ var lsqGrid = function(id, gridSetting) {
 		}
 
 		return selectedRecord;
-
-		$(tbody).find('tr.' + setting.cssRowSelected);
 	};
 
 	init(gridSetting);

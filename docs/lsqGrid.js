@@ -17,6 +17,18 @@ $(function() {
 		cssRowSelected : "select",
 		listener : {
 			'rowClick' : function(index, record) {
+				alert(index);
+			},
+			'selectChange' : function(selectedRecords) {
+				var text = "";
+
+				if (selectedRecords != null && selectedRecords.length > 0) {
+					for ( var i = 0; i < selectedRecords.length; i++) {
+						text += '[' + selectedRecords[i].name + ']';
+					}
+				}
+
+				$('#lsqGrid_multiSelect_console').text(text);
 			}
 		},
 		useSelect : false,
@@ -57,6 +69,18 @@ $(function() {
 		} ],
 		listener : {
 			'rowClick' : function(index, record) {
+				alert(index);
+			},
+			'selectChange' : function(selectedRecords) {
+				var text = "";
+
+				if (selectedRecords != null && selectedRecords.length > 0) {
+					for ( var i = 0; i < selectedRecords.length; i++) {
+						text += '[' + selectedRecords[i].name + ']';
+					}
+				}
+
+				$('#lsqGrid_multiSelect_console').text(text);
 			}
 		},
 		useSelect : true,
