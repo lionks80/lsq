@@ -1,0 +1,29 @@
+.lsqGrid {
+	width: 100%;
+	border: 1px solid #DDD;
+}
+
+.lsqGrid thead {
+	background-color: #EFEFEF;
+}
+
+.lsqGrid thead th {
+	text-align: center;
+	padding: 8px;
+}
+
+.lsqGrid tbody tr:nth-child(2n) {
+	background-color: #EFEFEF;
+}
+
+.lsqGrid tbody tr:HOVER {
+	background-color: #E9E9E9;
+}
+
+.lsqGrid tbody tr.select {
+	background-color: red;
+}
+
+.lsqGrid tbody td {
+	padding: 8px;
+}
