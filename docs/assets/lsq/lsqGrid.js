@@ -5,52 +5,70 @@
 	 */
 	var privateMethods = {};
 
-	privateMethods.rowClick = function(mainObject, record) {
+	privateMethods.eventBind = function(mainObject) {
 
+		var gridData = mainObject.data('gridData');
 		var setting = mainObject.data('gridSetting');
-		var selectChange = false;
 
-		if (setting.useSelect == true) {
+		mainObject.find('tbody tr').each(function() {
 
-			if (setting.multiSelect == true) {
-
-				// 멀티 셀렉트인 경우
-				if ($(this).hasClass(setting.cssRowSelected) == true) {
-					privateMethods.setRowSelect($(this),
-							setting.cssRowSelected, false);
-				} else {
-					privateMethods.setRowSelect($(this),
-							setting.cssRowSelected, true);
-				}
-
-				selectChange = true;
-
-			} else {
-				// 싱글 셀렉트인 경우
-				if ($(this).hasClass(setting.cssRowSelected) != true) {
-
-					mainObject.find('tbody').find(
-							'tr.' + setting.cssRowSelected).each(
-							function() {
-								privateMethods.setRowSelect($(this),
-										setting.cssRowSelected, false);
-							});
-					privateMethods.setRowSelect($(this),
-							setting.cssRowSelected, true);
-					selectChange = true;
-				}
-			}
-		}
-
-		if (setting.listener.rowClick != null) {
 			var rowIdx = $(this).attr("rowIdx");
-			setting.listener.rowClick(rowIdx, record);
-		}
+			var record = gridData[rowIdx];
 
-		if (selectChange == true) {
-			privateMethods.selectChange(mainObject);
-		}
+			$(this).click(function() {
+				
+				var setRowSelect = function(row, cssRowSelected, boolean) {
 
+					if (boolean == false) {
+						$(row).removeClass(cssRowSelected);
+						$(row).find('td input:checkbox').attr('checked', false);
+					} else {
+						$(row).addClass(cssRowSelected);
+						$(row).find('td input:checkbox').attr('checked', true);
+					}
+
+				}
+
+				if (setting.useSelect == true) {
+
+					if (setting.multiSelect == true) {
+
+						// 멀티 셀렉트인 경우
+						if ($(this).hasClass(setting.cssRowSelected) == true) {
+							setRowSelect($(this), setting.cssRowSelected, false);
+						} else {
+							setRowSelect($(this), setting.cssRowSelected, true);
+						}
+
+						selectChange = true;
+
+					} else {
+						// 싱글 셀렉트인 경우
+						if ($(this).hasClass(setting.cssRowSelected) != true) {
+
+							mainObject.find('tbody').find( 'tr.' + setting.cssRowSelected).each(
+									function() {
+										setRowSelect($(this), setting.cssRowSelected, false);
+									});
+							setRowSelect($(this), setting.cssRowSelected, true);
+							
+							selectChange = true;
+						}
+					}
+				}
+
+				if (setting.listener.rowClick) {
+					var rowIdx = $(this).attr("rowIdx");
+					setting.listener.rowClick(rowIdx, record);
+				}
+
+				if (selectChange == true) {
+					privateMethods.selectChange(mainObject);
+				}
+				
+			});
+
+		});
 	};
 
 	privateMethods.getDefaultSetting = function() {
@@ -77,28 +95,17 @@
 		mainObject.find('tbody').children().remove();
 	}
 
-	privateMethods.setRowSelect = function(row, cssRowSelected, boolean) {
-
-		if (boolean == false) {
-			$(row).removeClass(cssRowSelected);
-			$(row).find('td input:checkbox').attr('checked', false);
-		} else {
-			$(row).addClass(cssRowSelected);
-			$(row).find('td input:checkbox').attr('checked', true);
-		}
-
-	}
-
 	privateMethods.selectChange = function(mainObjectect) {
 
 		var setting = mainObjectect.data('gridSetting');
+		var gridData = mainObjectect.data('gridData');
 		var selectedTargets = mainObjectect.find('tbody tr.'
 				+ setting.cssRowSelected);
 
 		var selectedRecords = new Array(selectedTargets.length);
 
 		for ( var i = 0; i < selectedTargets.length; i++) {
-			selectedRecords[i] = rowData[$(selectedTargets[i]).attr('rowIdx')];
+			selectedRecords[i] = gridData[$(selectedTargets[i]).attr('rowIdx')];
 		}
 
 		if (setting.listener.selectChange) {
@@ -216,16 +223,7 @@
 				$mainObject.find('tbody').append(tr);
 			}
 
-			$mainObject.find('tbody tr').each(function() {
-
-				var rowIdx = $(this).attr("rowIdx");
-				var record = gridData[rowIdx];
-
-				$(this).click(function() {
-					privateMethods.rowClick($mainObject, record);
-				});
-
-			});
+			privateMethods.eventBind($mainObject);
 		})
 	}
 
@@ -240,13 +238,16 @@
 	};
 
 	publicMethods.getSelectedRecords = function() {
+		
+		var gridData = $(this).data('gridData');
+		var setting = $(this).data('gridSetting');
 
 		var selectedTarget = $(this).find('tbody tr.' + setting.cssRowSelected);
 
 		var selectedRecord = new Array(selectedTarget.length);
 
 		for ( var i = 0; i < selectedTarget.length; i++) {
-			selectedRecord[i] = rowData[$(selectedTarget[i]).attr('rowIdx')];
+			selectedRecord[i] = gridData[$(selectedTarget[i]).attr('rowIdx')];
 		}
 
 		return selectedRecord;
