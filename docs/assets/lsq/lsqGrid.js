@@ -1,60 +1,14 @@
-var lsqGrid = function(id, gridSetting) {
-
-	var target = $('#' + id)[0];
-
-	var setting = {
-		columns : null,
-		cssTable : "lsqGrid",
-		cssRowSelected : "select",
-		useSelect : false,
-		multiSelect : false,
-		listener : {
-			rowClick : function(rowIdx, record) {
-			},
-			selectChange : function(selectedRecords) {
-			}
-		}
-	};
-
-	$.extend(setting, gridSetting);
-
-	var mainTable = null;
-	var thead = null;
-	var tbody = null;
-	var rowData = null;
+(function($) {
 
 	/**
-	 * Private Function
+	 * Private Methods
 	 */
-	function setRowSelect(row, boolean) {
+	var privateMethods = {};
 
-		if (boolean == false) {
-			row.removeClass(setting.cssRowSelected);
-			row.find('td input:checkbox').attr('checked', false);
-		} else {
-			row.addClass(setting.cssRowSelected);
-			row.find('td input:checkbox').attr('checked', true);
-		}
+	privateMethods.rowClick = function(mainObject, record) {
 
-	}
-
-	function privateSelectChange() {
-
-		var selectedTargets = $(tbody).find('tr.' + setting.cssRowSelected);
-
-		var selectedRecords = new Array(selectedTargets.length);
-
-		for ( var i = 0; i < selectedTargets.length; i++) {
-			selectedRecords[i] = rowData[$(selectedTargets[i]).attr('rowIdx')];
-		}
-
-		setting.listener.selectChange(selectedRecords);
-
-	}
-
-	function privateRowClick() {
-
-		selectChange = false;
+		var setting = mainObject.data('gridSetting');
+		var selectChange = false;
 
 		if (setting.useSelect == true) {
 
@@ -62,9 +16,11 @@ var lsqGrid = function(id, gridSetting) {
 
 				// 멀티 셀렉트인 경우
 				if ($(this).hasClass(setting.cssRowSelected) == true) {
-					setRowSelect($(this), false);
+					privateMethods.setRowSelect($(this),
+							setting.cssRowSelected, false);
 				} else {
-					setRowSelect($(this), true);
+					privateMethods.setRowSelect($(this),
+							setting.cssRowSelected, true);
 				}
 
 				selectChange = true;
@@ -72,13 +28,15 @@ var lsqGrid = function(id, gridSetting) {
 			} else {
 				// 싱글 셀렉트인 경우
 				if ($(this).hasClass(setting.cssRowSelected) != true) {
-					// setRowSelect($(this), true);
-					// } else {
-					$(tbody).find('tr.' + setting.cssRowSelected).each(
+
+					mainObject.find('tbody').find(
+							'tr.' + setting.cssRowSelected).each(
 							function() {
-								setRowSelect($(this), false);
+								privateMethods.setRowSelect($(this),
+										setting.cssRowSelected, false);
 							});
-					setRowSelect($(this), true);
+					privateMethods.setRowSelect($(this),
+							setting.cssRowSelected, true);
 					selectChange = true;
 				}
 			}
@@ -86,129 +44,204 @@ var lsqGrid = function(id, gridSetting) {
 
 		if (setting.listener.rowClick != null) {
 			var rowIdx = $(this).attr("rowIdx");
-			var record = rowData[rowIdx];
-
 			setting.listener.rowClick(rowIdx, record);
 		}
 
 		if (selectChange == true) {
-			privateSelectChange();
+			privateMethods.selectChange(mainObject);
 		}
+
+	};
+
+	privateMethods.getDefaultSetting = function() {
+		return {
+			columns : null,
+			cssTable : "lsqGrid",
+			cssRowSelected : "select",
+			useSelect : false,
+			multiSelect : false,
+			listener : {
+				rowClick : function(rowIdx, record) {
+				},
+				selectChange : function(selectedRecords) {
+				}
+			}
+		};
 	}
 
-	var init = function(options) {
+	privateMethods.clear = function(mainObject) {
+		mainObject.data('gridData', null);
+		if (mainObject.data('gridSetting').multiSelect) {
+			mainObject.find('thead tr input:checkbox').attr('checked', false);
+		}
+		mainObject.find('tbody').children().remove();
+	}
 
-		mainTable = $('<table class=\"' + setting.cssTable + '\"></table>');
-		thead = $('<thead></thead>');
-		tbody = $('<tbody></tbody>');
+	privateMethods.setRowSelect = function(row, cssRowSelected, boolean) {
 
-		var thead_tr = $('<tr></tr>');
-		// 테이블 클래스 적용
-
-		if (setting.useSelect == true) {
-
-			var th = $("<th style=\"width:30px; text-align: center;\"></th>");
-
-			if (setting.multiSelect == true) {
-
-				fnCheckBoxChange = function() {
-
-					var checked = $(this).attr('checked') == true
-							|| $(this).attr('checked') == 'checked' ? true
-							: false;
-
-					$(tbody).find('tr').each(function() {
-						setRowSelect($(this), checked);
-					});
-
-					privateSelectChange();
-				}
-
-				checkBox = $('<input type=\"checkbox\">').change(
-						fnCheckBoxChange);
-
-				$(th).append(checkBox);
-			}
-
-			$(thead_tr).append(th);
+		if (boolean == false) {
+			$(row).removeClass(cssRowSelected);
+			$(row).find('td input:checkbox').attr('checked', false);
+		} else {
+			$(row).addClass(cssRowSelected);
+			$(row).find('td input:checkbox').attr('checked', true);
 		}
 
-		ths = [];
+	}
 
-		// column_header 생성
-		for ( var i = 0; i < setting.columns.length; i++) {
+	privateMethods.selectChange = function(mainObjectect) {
 
-			if (setting.columns[i].hidden != true) {
+		var setting = mainObjectect.data('gridSetting');
+		var selectedTargets = mainObjectect.find('tbody tr.'
+				+ setting.cssRowSelected);
 
-				ths[i] = '<th>' + setting.columns[i].header + '</th>';
-				$(ths[i]).width(setting.columns[i].width);
-			}
+		var selectedRecords = new Array(selectedTargets.length);
 
+		for ( var i = 0; i < selectedTargets.length; i++) {
+			selectedRecords[i] = rowData[$(selectedTargets[i]).attr('rowIdx')];
 		}
 
-		thead_tr.append(ths.join(''));
+		if (setting.listener.selectChange) {
+			setting.listener.selectChange(selectedRecords);
+		}
 
-		$(thead).append(thead_tr);
-		$(mainTable).append(thead);
-		$(mainTable).append(tbody);
-		$(target).append(mainTable);
+	}
 
-	};
+	/**
+	 * Public Methods
+	 */
+	var publicMethods = {};
 
-	this.dataBind = function(data) {
+	publicMethods.init = function(options) {
 
-		this.clear();
+		return this
+				.each(function() {
 
-		rowData = data;
-		// row 생성
-		for ( var i = 0; i < rowData.length; i++) {
+					// 메인 오브젝트를 재정의
+					var $mainObject = $(this);
+					// 기본 그리드 설정값 로드
+					var setting = privateMethods.getDefaultSetting();
+					// 기본 그리드 설정값에 추가 설정값 로드
+					$.extend(setting, options);
+					// 메인 오브젝트에 세팅값 저장
+					$mainObject.data('gridSetting', setting);
 
-			var tr = document.createElement("tr");
-			$(tr).attr('rowIdx', i);
+					// 테이블 생성 적용
+					$mainObject
+							.append($('<table class=\"'
+									+ setting.cssTable
+									+ '\"><thead><tr></tr></thead><tbody></tbody></table>'));
 
-			if (setting.useSelect == true) {
-				var td = document.createElement("td");
-				$(td).append("<input type=\"checkbox\"\">").css("text-align",
-						"center");
-				$(tr).append(td);
-			}
+					if (setting.useSelect == true) {
 
-			for ( var j = 0; j < setting.columns.length; j++) {
+						var th = $("<th style=\"width:30px; text-align: center;\"></th>");
 
-				if (setting.columns[j].hidden != true) {
-					var td = document.createElement("td");
+						if (setting.multiSelect == true) {
 
-					if (setting.columns[j].render != null) {
-						$(td).append(setting.columns[j].render(rowData[i]));
-					} else {
-						$(td).append(rowData[i][setting.columns[j].dataIndex]);
+							var checkBoxHeaderChange = function() {
+								var checked = $(this).attr('checked') == true
+										|| $(this).attr('checked') == 'checked' ? true
+										: false;
+
+								$(tbody).find('tr').each(function() {
+									setRowSelect($(this), checked);
+								});
+
+								privateMethods.selectChange();
+							}
+							var checkBox = $('<input type=\"checkbox\">')
+									.change(checkBoxHeaderChange);
+
+							$(th).append(checkBox);
+						}
+
+						$mainObject.find('thead tr').append(th);
 					}
 
-					$(tr).append(td);
+					// column_header 생성
+					for ( var i = 0; i < setting.columns.length; i++) {
+
+						var th = $('<th>' + setting.columns[i].header + '</th>')
+								.width(setting.columns[i].width);
+						$mainObject.find('thead tr').append(th);
+
+					}
+				})
+	}
+
+	publicMethods.dataBind = function(data) {
+
+		return this.each(function() {
+
+			// 메인 오브젝트를 재정의
+			var $mainObject = $(this);
+			// 그리드 로우 및 데이터 초기화
+			privateMethods.clear($mainObject);
+
+			$(this).data('gridData', data);
+
+			var gridData = $mainObject.data('gridData');
+			var setting = $mainObject.data('gridSetting');
+
+			// row 생성
+			for ( var i = 0; i < gridData.length; i++) {
+
+				var tr = $('<tr></tr>').attr('rowIdx', i);
+
+				if (setting.useSelect == true) {
+					$(tr).append(
+							$('<td></td>')
+									.append("<input type=\"checkbox\"\">").css(
+											"text-align", "center"));
 				}
 
-				// 히든이면 아예 테이블에 나타내지 않도록 변경.
-				// if (columns[j].hidden == true) {
-				// $(td).css('display', 'none');
-				// }
+				for ( var j = 0; j < setting.columns.length; j++) {
+
+					if (setting.columns[j].hidden != true) {
+						var td = $('<td></td>');
+						if (setting.columns[j].render != null) {
+							$(td)
+									.append(
+											setting.columns[j]
+													.render(gridData[i]));
+						} else {
+							$(td).append(
+									gridData[i][setting.columns[j].dataIndex]);
+						}
+
+						$(tr).append(td);
+					}
+				}
+
+				$mainObject.find('tbody').append(tr);
 			}
 
-			$(tr).click(privateRowClick);
+			$mainObject.find('tbody tr').each(function() {
 
-			$(tbody).append(tr);
-		}
+				var rowIdx = $(this).attr("rowIdx");
+				var record = gridData[rowIdx];
+
+				$(this).click(function() {
+					privateMethods.rowClick($mainObject, record);
+				});
+
+			});
+		})
+	}
+
+	publicMethods.clear = function() {
+
+		return this.each(function() {
+
+			var $mainObject = $(this);
+			privateMethods.clear($mainObject);
+		});
 
 	};
 
-	this.clear = function() {
-		rowData = null;
-		$(mainTable).find('thead tr input:checkbox').attr('checked', false);
-		$(tbody).children().remove();
-	};
+	publicMethods.getSelectedRecords = function() {
 
-	this.getSelectedRecords = function() {
-
-		var selectedTarget = $(tbody).find('tr.' + setting.cssRowSelected);
+		var selectedTarget = $(this).find('tbody tr.' + setting.cssRowSelected);
 
 		var selectedRecord = new Array(selectedTarget.length);
 
@@ -217,7 +250,21 @@ var lsqGrid = function(id, gridSetting) {
 		}
 
 		return selectedRecord;
+
+	}
+
+	$.fn.lsqGrid = function(methodName) {
+
+		if (publicMethods[methodName]) {
+			return publicMethods[methodName].apply(this, Array.prototype.slice
+					.call(arguments, 1));
+		} else if (typeof methodName === 'object' || !methodName) {
+			return publicMethods.init.apply(this, arguments);
+		} else {
+			$.error('Method ' + methodName
+					+ ' does not exist on jQuery.pagingToolBar');
+		}
+
 	};
 
-	init(gridSetting);
-};
+})(jQuery);

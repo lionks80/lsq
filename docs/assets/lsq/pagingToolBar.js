@@ -1,98 +1,152 @@
 (function($) {
 
-	var methods = {
-		init : function(options) {
+	function getCurrentPage(start, limit) {
+		if (start < limit) {
+			return 1;
+		} else {
+			return start / limit + 1;
+		}
+	}
 
-			return this.each(function() {
+	function getTotalPage(totalCount, limit) {
+		var value = parseInt(totalCount / limit);
 
-				$(this).children().remove();
-				var $this = $(this);
+		if (totalCount % limit != 0) {
+			value++;
+		}
 
-				// 왼쪽에 표시될 갯수
-				var leftCount = parseInt((options.displayCount - 1) / 2);
-				// 왼쪽 시작 수
-				var startNum = -1;
-				startNum = options.page - leftCount;
-				if (startNum < 1) {
-					startNum = 1;
-				}
-				// 오른쪽 표시 수
-				var endNum = startNum + options.displayCount - 1;
+		// 기본적으로 페이지가 없을 경우에도 1로 고정함.
+		if (value == 0) {
+			return 1;
+		}
 
-				if (endNum >= options.totalPage) {
-					endNum = options.totalPage;
-				}
+		return value;
+	}
 
-				var ulTag = document.createElement("ul");
+	function getStartNum(displayCount, currentPage) {
 
-				var startBtn = document.createElement("li");
-				$(startBtn).append("<a>«</a>");
-				var preBtn = document.createElement("li");
-				$(preBtn).append("<a>pre</a>");
-				var nextBtn = document.createElement("li");
-				$(nextBtn).append("<a>next</a>");
-				var endBtn = document.createElement("li");
-				$(endBtn).append("<a>»</a>");
+		var leftCount = parseInt((displayCount - 1) / 2);
+		// 왼쪽 시작 수
+		var startNum = -1;
+		startNum = currentPage - leftCount;
+		if (startNum < 1) {
+			startNum = 1;
+		}
 
-				$(ulTag).append($(startBtn)).append($(preBtn));
+		return startNum;
+	}
 
-				for ( var i = startNum; i <= endNum; i++) {
+	function getEndNum(startNum, displayCount, totalPage) {
+		var endNum = startNum + displayCount - 1;
 
-					var li = document.createElement("li");
-					if (i == options.page) {
-						$(li).addClass("active");
+		if (endNum >= totalPage) {
+			endNum = totalPage;
+		}
+
+		return endNum;
+	}
+
+	var methods = {};
+	methods.init = function(options) {
+
+		return this
+				.each(function() {
+
+					var setting = {
+						"start" : 0,
+						"limit" : 15,
+						"totalCount" : 0,
+						"displayCount" : 9,
+						"trigger" : null
+					};
+
+					$.extend(setting, options);
+
+					setting.currentPage = getCurrentPage(setting.start,
+							setting.limit);
+					setting.totalPage = getTotalPage(setting.totalCount,
+							setting.limit);
+
+					$(this).children().remove();
+
+					// 왼쪽 시작 수
+					var startNum = getStartNum(setting.displayCount,
+							setting.currentPage);
+					// 오른쪽 표시 수
+					var endNum = getEndNum(startNum, setting.displayCount,
+							setting.totalPage);
+
+					var ulTag = $('<ul></ul>');
+
+					var startBtn = $('<li><a>«</a></li>');
+					var preBtn = $('<li><a>pre</a></li>');
+					var nextBtn = $('<li><a>next</a></li>');
+					var endBtn = $('<li><a>»</a></li>');
+
+					$(ulTag).append($(startBtn)).append($(preBtn));
+
+					for ( var i = startNum; i <= endNum; i++) {
+
+						var li = $('<li></li>');
+						if (i == setting.currentPage) {
+							$(li).addClass("active");
+						} else {
+							$(li).bind("click", function() {
+								setting.trigger($(this).text());
+							}).css("cursor", "pointer");
+						}
+
+						var a = $('<a></a>');
+						$(a).id = "pgtb_num";
+						$(ulTag).append($(li).append($(a).append(i)));
+
+					}
+
+					$(ulTag).append($(nextBtn)).append($(endBtn));
+
+					$(this).append(ulTag);
+
+					// 처음으로 이동 및 첫 페이지
+					if (parseInt(setting.currentPage) < 2) {
+						$(startBtn).addClass("disabled");
+						$(preBtn).addClass("disabled");
 					} else {
-						$(li).bind("click", function() {
-							options.trigger($(this).text());
+
+						$(startBtn).bind("click", function() {
+							setting.trigger(1);
+						}).css("cursor", "pointer");
+						;
+
+						$(preBtn).bind(
+								"click",
+								function() {
+									previewPage = parseInt(setting.currentPage)
+											- parseInt(1);
+									setting.trigger(previewPage);
+								}).css("cursor", "pointer");
+					}
+
+					// 다음으로 이동
+					if (parseInt(setting.currentPage) >= parseInt(setting.totalPage)) {
+						$(nextBtn).addClass("disabled");
+						$(endBtn).addClass("disabled");
+					} else {
+						$(nextBtn);
+						$(nextBtn).bind(
+								"click",
+								function() {
+									nextPage = parseInt(setting.currentPage)
+											+ parseInt(1);
+									setting.trigger(nextPage);
+								}).css("cursor", "pointer");
+
+						$(endBtn).bind("click", function() {
+							setting.trigger(setting.totalPage);
 						}).css("cursor", "pointer");
 					}
 
-					var a = document.createElement("a");
-					$(a).id = "pgtb_num";
-					$(ulTag).append($(li).append($(a).append(i)));
-
-				}
-
-				$(ulTag).append($(nextBtn)).append($(endBtn));
-
-				$this.append(ulTag);
-
-				// 처음으로 이동 및 첫 페이지
-				if (parseInt(options.page) < 2) {
-					$(startBtn).addClass("disabled");
-					$(preBtn).addClass("disabled");
-				} else {
-
-					$(startBtn).bind("click", function() {
-						options.trigger(1);
-					}).css("cursor", "pointer");
-					;
-
-					$(preBtn).bind("click", function() {
-						previewPage = parseInt(options.page) - parseInt(1);
-						options.trigger(previewPage);
-					}).css("cursor", "pointer");
-				}
-
-				// 다음으로 이동
-				if (parseInt(options.page) >= parseInt(options.totalPage)) {
-					$(nextBtn).addClass("disabled");
-					$(endBtn).addClass("disabled");
-				} else {
-					$(nextBtn);
-					$(nextBtn).bind("click", function() {
-						nextPage = parseInt(options.page) + parseInt(1);
-						options.trigger(nextPage);
-					}).css("cursor", "pointer");
-
-					$(endBtn).bind("click", function() {
-						options.trigger(options.totalPage);
-					}).css("cursor", "pointer");
-				}
-
-			});
-		}
-	};
+				})
+	}
 
 	$.fn.pagingToolBar = function(method) {
 
