@@ -1,136 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+<meta charset="utf-8">
+<title>Bootstrap, from Twitter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <!-- Le styles -->
-    <link href="./assets/css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-    </style>
-    <link href="./assets/css/bootstrap-responsive.css" rel="stylesheet">
+<!-- Le styles -->
+<link href="./assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+.sidebar-nav {
+	padding: 9px 0;
+}
+</style>
+<link href="./assets/bootstrap/css/bootstrap-responsive.css"
+	rel="stylesheet">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Fav and touch icons -->
-    <link rel="shortcut icon" href="./assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="./assets/ico/apple-touch-icon-57-precomposed.png">
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">[ lsq ]</a>
-          <div class="nav-collapse collapse">
-            <p class="navbar-text pull-right">
-              Logged in as <a href="#" class="navbar-link">Username</a>
-            </p>
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-    
-    
+	<!--  COMMON HEADER -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+			     
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a> 
+				<a class="brand" href="#">[ lsq-lib ]</a>
+	            <p class="navbar-text pull-right">
+	               <a href="https://github.com/lionks80/lsq"><img src="./assets/img/blacktocat.png" height="10"> GitHub</a>
+                </p>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="active"><a href="./index.html">Home</a></li>
+						<li><a href="./lsq.html">lsq</a></li>
+						<li><a href="./lsqGrid.html">lsqGrid</a></li>
+						<li><a href="./lsqPaging">lsqPaging</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
 
-          <div class="hero-unit">
-           <div class="container">
-	            <h1>lsq</h1>
-	            <p>link4h javascript & jquery library.</p>
-	            <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-            </div>
-          </div>
-          
-           <div class="container">
-          
-          <div class="row-fluid">
-            <div class="span4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
-          <div class="row-fluid">
-            <div class="span4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Heading</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-               <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
+	<div class="hero-unit">
+		<div class="container">
+			<h1>lsq-lib</h1>
+			<p>link4h javascript & jquery library.</p>
+			<p>
+				<a class="btn btn-primary" href="https://github.com/lionks80/lsq/zipball/master">Download a .zip file</a> 
+				<a class="btn btn-primary" href="https://github.com/lionks80/lsq/tarball/master">Download a tar.gz file</a> 
+			</p>
+		</div>
+	</div>
 
-</div>
+	<!--  COMMON HEADER -->
 
-      <hr>
+	<!-- /container -->
+	<div class="container">
 
-      <footer>
-        <p>&copy; Company 2012</p>
-      </footer>
+		<div class="row-fluid">
+			<div class="span4">
+				<h2>lsq</h2>
+				<p>Donec id elit non mi porta gravida at eget metus. Fusce
+					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
+					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
+					magna mollis euismod. Donec sed odio dui.</p>
+				<p>
+					<a class="btn" href="./lsq.html">View details &raquo;</a>
+				</p>
+			</div>
+			<!--/span-->
+			<div class="span4">
+				<h2>lsqGrid</h2>
+				<p>Donec id elit non mi porta gravida at eget metus. Fusce
+					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
+					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
+					magna mollis euismod. Donec sed odio dui.</p>
+				<p>
+					<a class="btn" href="./lsqGrid.html">View details &raquo;</a>
+				</p>
+			</div>
+			<!--/span-->
+			<div class="span4">
+				<h2>lsqPaging</h2>
+				<p>Donec id elit non mi porta gravida at eget metus. Fusce
+					dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
+					ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
+					magna mollis euismod. Donec sed odio dui.</p>
+				<p>
+					<a class="btn" href="./lsqPaging.html">View details &raquo;</a>
+				</p>
+			</div>
+			<!--/span-->
+		</div>
+	</div>
+	<!-- /container -->
 
-    </div><!--/.fluid-container-->
+	<!-- foot container -->
+	<div>
+		<hr>
+		<footer>
+			<p>&copy; Company 2012</p>
+		</footer>
+	</div>
+	<!-- /container -->
 
-    <!-- Le javascript
+	<!-- Le javascript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./assets/js/jquery.js"></script>
-    <script src="./assets/js/bootstrap-transition.js"></script>
-    <script src="./assets/js/bootstrap-alert.js"></script>
-    <script src="./assets/js/bootstrap-modal.js"></script>
-    <script src="./assets/js/bootstrap-dropdown.js"></script>
-    <script src="./assets/js/bootstrap-scrollspy.js"></script>
-    <script src="./assets/js/bootstrap-tab.js"></script>
-    <script src="./assets/js/bootstrap-tooltip.js"></script>
-    <script src="./assets/js/bootstrap-popover.js"></script>
-    <script src="./assets/js/bootstrap-button.js"></script>
-    <script src="./assets/js/bootstrap-collapse.js"></script>
-    <script src="./assets/js/bootstrap-carousel.js"></script>
-    <script src="./assets/js/bootstrap-typeahead.js"></script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="./assets/jquery.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-transition.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-alert.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-modal.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-dropdown.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-scrollspy.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-tab.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-tooltip.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-popover.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-button.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-collapse.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-carousel.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-typeahead.js"></script>
 
-  </body>
+</body>
 </html>

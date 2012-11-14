@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bootstrap, from Twitter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Le styles -->
+<link href="./assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/google-code-prettify/prettify.css" rel="stylesheet">
+<style type="text/css">
+	body { padding-top: 60px; padding-bottom: 40px; }
+	.sidebar-nav { padding: 9px 0; }
+</style>
+<link href="./assets/bootstrap//css/bootstrap-responsive.css" rel="stylesheet">
+<script src="./assets/jquery.js"></script>
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+	<!--  COMMON HEADER -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				</a> <a class="brand" href="#">[ lsq-lib ]</a>
+				<p class="navbar-text pull-right">
+					<a href="https://github.com/lionks80/lsq"><img
+						src="./assets/img/blacktocat.png" height="10"> GitHub</a>
+				</p>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li><a href="./index.html">Home</a></li>
+						<li class="active"><a href="./lsq.html">lsq</a></li>
+						<li><a href="./lsqGrid.html">lsqGrid</a></li>
+						<li><a href="./lsqPaging">lsqPaging</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+	<!--  COMMON HEADER -->
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span3">
+				<div class="well sidebar-nav" data-spy="affix">
+					<ul class="nav nav-list">
+						<li><a href="#about_lsq">About lsq</a></li>
+						<li><a href="#lsq_sting">lsq.string</a></li>
+						<li><a href="#lsq_form">lsq.form</a></li>
+						<li><a href="#">Link</a></li>
+						<li><a href="#">Link</a></li>
+						<li><a href="#">Link</a></li>
+						<li><a href="#">Link</a></li>
+						<li class="nav-header">Sidebar</li>
+						<li><a href="#">Link</a></li>
+						<li><a href="#">Link</a></li>
+						<li><a href="#">Link</a></li>
+					</ul>
+				</div>
+				<!--/.well -->
+			</div>
+			<!--/span-->
+			<div class="span9">
+
+				<section id="about_lsq">
+
+					<div class="hero-unit">
+						<h1>lsq</h1>
+						<p>Javascript & jQuery Util Object.</p>
+					</div>
+
+				</section>
+
+				<section id="lsq_sting">
+
+					<h1>
+						lsq.string <small>- 문자관련 유틸리티</small>
+					</h1>
+					<hr>
+					<h4>Methods</h4>
+					<table class="table table-bordered table-striped">
+						<thead> <tr>
+								<th>Return</th>
+								<th>Method</th>
+								<th>Description</th>
+						</tr> </thead>
+						<tbody>
+							<tr>
+								<td>boolean</td>
+								<td>lsq.string.hasText(str)</td>
+                                <td>문자열 존재 여부 판단</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section id="lsq_form">
+
+                   <h1>
+                        lsq.form <small>- 폼 관련 유틸리티</small>
+                    </h1>
+                    <hr>
+                    <h4>Methods</h4>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Return</th>
+                                <th>Method</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>void</td>
+                                <td>lsq.form.select.clear(elementId)</td>
+                                <td>셀렉트박스 초기화</td>
+                            </tr>
+                            <tr>
+                                <td>void</td>
+                                <td>lsq.form.select.addOption(elementId, value, text)</td>
+                                <td>셀렉트박스 옵션 추가</td>
+                            </tr>
+                            <tr>
+                                <td>void</td>
+                                <td>lsq.form.select.bindOptions(elementId, dataArray, valueProperty, textProperty)</td>
+                                <td>jsonObject Array로 셀렉트박스 옵션들을 추가</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+				</section>
+
+                <section id="lsq_utils">
+
+                   <h1>
+                        lsq.utils <small>- 일반 유틸리티</small>
+                    </h1>
+                    <hr>
+                    <h4>Methods</h4>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Return</th>
+                                <th>Method</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>boolean</td>
+                                <td>lsq.utils.isArray(obj)</td>
+                                <td>입력한 오브젝트가 Array인지 검사</td>
+                            </tr>
+                            <tr>
+                                <td>string</td>
+                                <td>getParameterByName(name)</td>
+                                <td>입력한 이름의 값을 QueryString에서 가지고 옴.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </section>
+                
+                
+                
+                <section id="lsq_ajax">
+
+	                <h1>
+	                      lsq.ajax <small>- lsq Ajax request</small>
+	                </h1>
+                  <hr>
+
+                    <h4>Methods</h4>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Return</th>
+                                <th>Method</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>boolean</td>
+                                <td>lsq.ajax(method, requestUrl, data, contentType, async, beforeSend, complete)</td>
+                                <td>jquery ajax 호출 후 결과를 jsonObject 타입으로 반환</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                  <h4>Options</h4>
+                  <table class="table table-bordered table-striped">
+                      <thead>
+                          <tr>
+                              <th>Name</th>
+                              <th>Description</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>method</td>
+                              <td><code>jQuery Argument</code> 요청방식 - 기본값: 'GET'</td>
+                          </tr>
+                          <tr>
+                              <td>requestUrl</td>
+                              <td><code>jQuery Argument</code> 요청 URL</td>
+                          </tr>
+                          <tr>
+                              <td>contentType</td>
+                              <td><code>jQuery Argument</code> 데이터 전송 타입 - ex) 'application/json'</td>
+                          </tr>
+                          <tr>
+                              <td>data</td>
+                              <td><code>jQuery Argument</code> 데이터 - QueryString or POST data</td>
+                          </tr>
+                          <tr>
+                              <td>async</td>
+                              <td><code>jQuery Argument</code> ajax 호출 방식 - 기본: 동기식</td>
+                          </tr>
+                          <tr>
+                              <td>beforeSend</td>
+                              <td><code>jQuery Argument</code> 호출전 실행 함수</td>
+                          </tr>
+                          <tr>
+                              <td>complete</td>
+                              <td><code>jQuery Argument</code> 호출 후 실행 함수</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+              </section>
+
+                <section id="lsq_cm">
+
+                   <h1>
+                        lsq.cm <small>- lsq Communication Manager</small>
+                    </h1>
+                    <hr>
+                    <h4>Methods</h4>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Return</th>
+                                <th>Method</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>void</td>
+                                <td>lsq.cm.createRestCM(baseUrl, listUrl, getUrl, createUrl, updateUrl, deleteUrl)</td>
+                                <td>create Restfull Communication Manager</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h4>Example</h4>
+<pre class="prettyprint linenums">
+// create testCM
+var testCM = lsq.cm.createRestCM('/book');
+
+//[GET request] "/book" with data
+testCM.list(data);
+
+//[GET request] "/book/123"
+testCM.get('123');
+
+//[POST request with 'application/json' type data] "/book"
+testCM.create(key, data);
+
+//[PUT request with 'application/json' type data] "/book/123"
+testCM.update(123, data);
+
+//[DELETE request] "/book/123"
+testCM.del('123');
+                    
+</pre>
+
+                </section>
+                
+			</div>
+			<!--/span-->
+		</div>
+		<!--/row-->
+
+	</div>
+	<!--/.fluid-container-->
+
+	<!-- foot container -->
+	<div>
+		<hr>
+		<footer>
+			<p>&copy; Company 2012</p>
+		</footer>
+	</div>
+	<!-- /container -->
+
+	<!-- Le javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+    <script src="./assets/google-code-prettify/prettify.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-transition.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-alert.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-modal.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-dropdown.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-scrollspy.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-tab.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-tooltip.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-popover.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-button.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-collapse.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-carousel.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-typeahead.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-affix.js"></script>
+
+</body>
+</html>
