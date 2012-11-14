@@ -17,6 +17,12 @@
 <link href="./assets/bootstrap//css/bootstrap-responsive.css" rel="stylesheet">
 <script src="./assets/jquery.js"></script>
 
+<script type="text/javascript" src="./assets/SyntaxHighlighter-3.0.83/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+<script type="text/javascript" src="./assets/SyntaxHighlighter-3.0.83/scripts/shCore.js"></script>
+<script type="text/javascript" src="./assets/SyntaxHighlighter-3.0.83/scripts/shAutoloader.js"></script>
+<link type="text/css" rel="stylesheet" href="./assets/SyntaxHighlighter-3.0.83/styles/shCore.css"/>
+<link type="text/css" rel="Stylesheet" href="./assets/SyntaxHighlighter-3.0.83/styles/shThemeDefault.css" />
+
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -265,7 +271,9 @@
                         </tbody>
                     </table>
                     <h4>Example</h4>
-<pre class="prettyprint linenums">
+
+<pre class="brush: js;">
+
 // create testCM
 var testCM = lsq.cm.createRestCM('/book');
 
@@ -283,9 +291,9 @@ testCM.update(123, data);
 
 //[DELETE request] "/book/123"
 testCM.del('123');
-                    
-</pre>
 
+</pre>
+                    
                 </section>
                 
 			</div>
@@ -322,6 +330,36 @@ testCM.del('123');
 	<script src="./assets/bootstrap/js/bootstrap-carousel.js"></script>
 	<script src="./assets/bootstrap/js/bootstrap-typeahead.js"></script>
 	<script src="./assets/bootstrap/js/bootstrap-affix.js"></script>
+	
+	<script type="text/javascript">
+SyntaxHighlighter.autoloader(
+	'applescript			./assets/SyntaxHighlighter-3.0.83/scripts/shBrushAppleScript.js',
+	'actionscript3 as3		./assets/SyntaxHighlighter-3.0.83/scripts/shBrushAS3.js',
+	'bash shell				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushBash.js',
+	'coldfusion cf			./assets/SyntaxHighlighter-3.0.83/scripts/shBrushColdFusion.js',
+	'cpp c					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushCpp.js',
+	'c# c-sharp csharp		./assets/SyntaxHighlighter-3.0.83/scripts/shBrushCSharp.js',
+	'css					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushCss.js',
+	'delphi pascal			./assets/SyntaxHighlighter-3.0.83/scripts/shBrushDelphi.js',
+	'diff patch pas			./assets/SyntaxHighlighter-3.0.83/scripts/shBrushDiff.js',
+	'erl erlang				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushErlang.js',
+	'groovy					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushGroovy.js',
+	'java					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushJava.js',
+	'jfx javafx				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushJavaFX.js',
+	'js jscript javascript	./assets/SyntaxHighlighter-3.0.83/scripts/shBrushJScript.js',
+	'perl pl				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushPerl.js',
+	'php					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushPhp.js',
+	'text plain				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushPlain.js',
+	'py python				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushPython.js',
+	'ruby rails ror rb		./assets/SyntaxHighlighter-3.0.83/scripts/shBrushRuby.js',
+	'scala					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushScala.js',
+	'sql					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushSql.js',
+	'vb vbnet				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushVb.js',
+	'xml xhtml xslt html	./assets/SyntaxHighlighter-3.0.83/scripts/shBrushXml.js'
+);
+
+SyntaxHighlighter.all();
+</script>
 
 </body>
 </html>
