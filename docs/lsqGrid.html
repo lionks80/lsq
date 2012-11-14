@@ -1,265 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>lsqGrid</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+<meta charset="utf-8">
+<title>Bootstrap, from Twitter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <!-- Le styles -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="assets/css/docs.css" rel="stylesheet">
-    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+<!-- Le styles -->
+<link href="./assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/google-code-prettify/prettify.css" rel="stylesheet">
+<style type="text/css">
+	body { padding-top: 60px; padding-bottom: 40px; }
+	.sidebar-nav { padding: 9px 0; }
+	section { padding-top: 60px;}
+</style>
+<link href="./assets/bootstrap//css/bootstrap-responsive.css" rel="stylesheet">
+<script src="./assets/jquery.js"></script>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+<script type="text/javascript" src="./assets/SyntaxHighlighter-3.0.83/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+<script type="text/javascript" src="./assets/SyntaxHighlighter-3.0.83/scripts/shCore.js"></script>
+<script type="text/javascript" src="./assets/SyntaxHighlighter-3.0.83/scripts/shAutoloader.js"></script>
+<link type="text/css" rel="stylesheet" href="./assets/SyntaxHighlighter-3.0.83/styles/shCore.css"/>
+<link type="text/css" rel="Stylesheet" href="./assets/SyntaxHighlighter-3.0.83/styles/shThemeDefault.css" />
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-    
-	<script src="assets/js/jquery.js"></script>
-	<script src="assets/lsq/lsq.js"></script>
-    <link href="assets/lsq/lsqGrid.css" rel="stylesheet">
-	<script src="assets/lsq/lsqGrid.js"></script>
-	<script src="assets/lsq/pagingToolBar.js"></script>
+</head>
 
-  </head>
+<body>
+	<!--  COMMON HEADER -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
 
-  <body data-spy="scroll" data-target=".bs-docs-sidebar">
-
-    <!-- Navbar
-    ================================================== -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="./index.html">lsq</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="">
-                <a href="./index.html">Home</a>
-              </li>
-              <li class="active">
-                <a href="./lsqGrid.html">lsqGrid</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-<!-- Subhead
-================================================== -->
-<header class="jumbotron subhead">
-  <div class="container">
-    <h1>lsqGrid</h1>
-    <p class="lead">a&mdash;b.
-  </div>
-</header>
-
-  <div class="container">
-
-    <!-- Docs nav
-    ================================================== -->
-    <div class="row">
-      <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav">
-          <li><a href="#overview"><i class="icon-chevron-right"></i> Overview</a></li>
-          <li><a href="#create"><i class="icon-chevron-right"></i> Create Grid</a></li>
-          <li><a href="#dataBind"><i class="icon-chevron-right"></i> Data Bind</a></li>
-          <li><a href="#methods"><i class="icon-chevron-right"></i> Methods</a></li>
-        </ul>
-      </div>
-      <div class="span9">
-
-	<!-- Overview
-	================================================== -->
-	<section id="overview">
-		<div class="page-header">
-		  <h1>lsqGrid</h1>
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				</a> <a class="brand" href="#">[ lsq-lib ]</a>
+				<p class="navbar-text pull-right">
+					<a href="https://github.com/lionks80/lsq"><img
+						src="./assets/img/blacktocat.png" height="10"> GitHub</a>
+				</p>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li><a href="./index.html">Home</a></li>
+						<li class="active"><a href="./lsq.html">lsq</a></li>
+						<li><a href="./lsqGrid.html">lsqGrid</a></li>
+						<li><a href="./lsqPaging">lsqPaging</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
 		</div>
-		
-		<div id="pload">ddd</div>
-		
-		<h3>About jsGrid</h3>
-		<p>lsqGrid는 </p>
-		
-		<h3>Data attributes</h3>
-		<p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first class API and should be your first consideration when using a plugin.</p>
-		
-		<p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the body namespaced with `'data-api'`. This looks like this:
-		<pre class="prettyprint linenums">$('body').off('.data-api')</pre>
-		
-		<p>Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:</p>
-		<pre class="prettyprint linenums">$('body').off('.alert.data-api')</pre>
-		
-		<h3>Programmatic API</h3>
-		<p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
-		<pre class="prettyprint linenums">$(".btn.danger").button("toggle").addClass("fat")</pre>
-		<p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):</p>
-		<pre class="prettyprint linenums">
-		$("#myModal").modal()                       // initialized with defaults
-		$("#myModal").modal({ keyboard: false })   // initialized with no keyboard
-		$("#myModal").modal('show')                // initializes and invokes show immediately</p>
-		</pre>
-		          <p>Each plugin also exposes its raw constructor on a `Constructor` property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel=popover]').data('popover')</code>.</p>
-		
-		          <h3>Events</h3>
-		          <p>Bootstrap provides custom events for most plugin's unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is trigger on the completion of an action.</p>
-		          <p>All infinitive events provide preventDefault functionality. This provides the abililty to stop the execution of an action before it starts.</p>
-		<pre class="prettyprint linenums">
-		$('#myModal').on('show', function (e) {
-		    if (!data) return e.preventDefault() // stops modal from being shown
-		})
-		</pre>
-	</section>
-        
-<!-- TEST -->
-<script src="./lsqGrid.js"></script>
+	</div>
+	<!--  COMMON HEADER -->
 
-        <!-- Transitions
-        ================================================== -->
-        <section id="create">
-          <div class="page-header">
-            <h1>Create Grid</h1>
-          </div>
-          <h3>About create Grid</h3>
-          <p>For simple transition effects, include bootstrap-transition.js once alongside the other JS files. If you're using the compiled (or minified) bootstrap.js, there is no need to include this&mdash;it's already there.</p>
-          <h3>Use cases</h3>
-          <h2>지정한 위치에 그리드를 생성한다.</h2>
-          <p>A few examples of the transition plugin:</p>
-<pre class="prettyprint linenums">
-var grid_board = new lsqGrid('lsqGrid_board', {
-	columns : [ {
-		header : 'id',
-		dataIndex : 'id',
-		hidden : true
-	}, {
-		header : 'Code',
-		dataIndex : 'code'
-	}, {
-		header : 'Name',
-		dataIndex : 'name'
-	} ],
-	cssClass : {
-		table : [ "table", "table-bordered" ],
-		row : {
-			mouseover : "rowMouseOver",
-			selected : "rowSelected"
-		},
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span3">
+				<div class="well span3 sidebar-nav" data-spy="affix">
+					<ul class="nav nav-list">
+						<li><a href="#about_lsq">About lsq</a></li>
+						<li><a href="#lsq_sting">lsq.string</a></li>
+						<li><a href="#lsq_form">lsq.form</a></li>
+						<li><a href="#lsq_utils">lsq.utils</a></li>
+						<li><a href="#lsq_ajax">lsq.ajax</a></li>
+						<li><a href="#lsq_cm">lsq.cm</a></li>
+					</ul>
+				</div>
+				<!--/.well -->
+			</div>
+			<!--/span-->
+			<div class="span9">
 
-		header : "grid-header"
-	},
-	listener : {
-		'rowClick' : function(index, record) {
-			show_category_list();
-			pnl_board_info_show();
+				<div class="hero-unit" id="about_lsq">
+					<h1>lsqGrid</h1>
+					<p>jQuery Plug-in.</p>
+				</div>
 
-		}
-	},
-	useSelect : true,
-	multiSelect : false
-});
+				<section id="lsq_sting">
+
+					<h1>
+						lsq.string <small>- 문자관련 유틸리티</small>
+					</h1>
+					<hr>
+					<h4>Methods</h4>
+					<table class="table table-bordered table-striped">
+						<thead> <tr>
+								<th>Return</th>
+								<th>Method</th>
+								<th>Description</th>
+						</tr> </thead>
+						<tbody>
+							<tr>
+								<td>boolean</td>
+								<td>lsq.string.hasText(str)</td>
+                                <td>문자열 존재 여부 판단</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section id="lsq_form">
+
+                   <h1>
+                        lsq.form <small>- 폼 관련 유틸리티</small>
+                    </h1>
+                    <hr>
+                    <h4>Methods</h4>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Return</th>
+                                <th>Method</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>void</td>
+                                <td>lsq.form.select.clear(elementId)</td>
+                                <td>셀렉트박스 초기화</td>
+                            </tr>
+                            <tr>
+                                <td>void</td>
+                                <td>lsq.form.select.addOption(elementId, value, text)</td>
+                                <td>셀렉트박스 옵션 추가</td>
+                            </tr>
+                            <tr>
+                                <td>void</td>
+                                <td>lsq.form.select.bindOptions(elementId, dataArray, valueProperty, textProperty)</td>
+                                <td>jsonObject Array로 셀렉트박스 옵션들을 추가</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+				</section>
+
+                <section id="lsq_utils">
+
+                   <h1>
+                        lsq.utils <small>- 일반 유틸리티</small>
+                    </h1>
+                    <hr>
+                    <h4>Methods</h4>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Return</th>
+                                <th>Method</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>boolean</td>
+                                <td>lsq.utils.isArray(obj)</td>
+                                <td>입력한 오브젝트가 Array인지 검사</td>
+                            </tr>
+                            <tr>
+                                <td>string</td>
+                                <td>getParameterByName(name)</td>
+                                <td>입력한 이름의 값을 QueryString에서 가지고 옴.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </section>
+                
+                
+                
+                <section id="lsq_ajax">
+
+	                <h1>
+	                      lsq.ajax <small>- lsq Ajax request</small>
+	                </h1>
+                  <hr>
+
+                    <h4>Methods</h4>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Return</th>
+                                <th>Method</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>boolean</td>
+                                <td>lsq.ajax(method, requestUrl, data, contentType, async, beforeSend, complete)</td>
+                                <td>jquery ajax 호출 후 결과를 jsonObject 타입으로 반환</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                  <h4>Options</h4>
+                  <table class="table table-bordered table-striped">
+                      <thead>
+                          <tr>
+                              <th>Name</th>
+                              <th>Description</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>method</td>
+                              <td><code>jQuery Argument</code> 요청방식 - 기본값: 'GET'</td>
+                          </tr>
+                          <tr>
+                              <td>requestUrl</td>
+                              <td><code>jQuery Argument</code> 요청 URL</td>
+                          </tr>
+                          <tr>
+                              <td>contentType</td>
+                              <td><code>jQuery Argument</code> 데이터 전송 타입 - ex) 'application/json'</td>
+                          </tr>
+                          <tr>
+                              <td>data</td>
+                              <td><code>jQuery Argument</code> 데이터 - QueryString or POST data</td>
+                          </tr>
+                          <tr>
+                              <td>async</td>
+                              <td><code>jQuery Argument</code> ajax 호출 방식 - 기본: 동기식</td>
+                          </tr>
+                          <tr>
+                              <td>beforeSend</td>
+                              <td><code>jQuery Argument</code> 호출전 실행 함수</td>
+                          </tr>
+                          <tr>
+                              <td>complete</td>
+                              <td><code>jQuery Argument</code> 호출 후 실행 함수</td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+              </section>
+
+                <section id="lsq_cm">
+
+                   <h1>
+                        lsq.cm <small>- lsq Communication Manager</small>
+                    </h1>
+                    <hr>
+                    <h4>Methods</h4>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Return</th>
+                                <th>Method</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>void</td>
+                                <td>lsq.cm.createRestCM(baseUrl, listUrl, getUrl, createUrl, updateUrl, deleteUrl)</td>
+                                <td>create Restfull Communication Manager</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h4>Example</h4>
+
+<pre class="brush: js;">
+
+// create testCM
+var testCM = lsq.cm.createRestCM('/book');
+
+//[GET request] "/book" with data
+testCM.list(data);
+
+//[GET request] "/book/123"
+testCM.get('123');
+
+//[POST request with 'application/json' type data] "/book"
+testCM.create(key, data);
+
+//[PUT request with 'application/json' type data] "/book/123"
+testCM.update(123, data);
+
+//[DELETE request] "/book/123"
+testCM.del('123');
+
 </pre>
+                    
+                </section>
+                
+			</div>
+			<!--/span-->
+		</div>
+		<!--/row-->
 
+	</div>
+	<!--/.fluid-container-->
 
-        </section>
-        
-        <!-- dataBind
-        ================================================== -->
-        <section id="dataBind">
-          <div class="page-header">
-            <h1>databind <small>bootstrap-transition.js</small></h1>
-          </div>
-          
-          <pre class="prettyprint linenums">$(".btn.danger").button("toggle").addClass("fat")</pre>
-          <div id="lsqGrid_basic"></div><br>
-          <div id="lsqGrid_basic_pg" class="pagination pagination-centered"></div><br>
-          <div id="lsqGrid_userSelect"></div><br>
-          <div id="lsqGrid_userSelect_pg" class="pagination pagination-centered"></div><br>
-          <div id="lsqGrid_multiSelect"></div><br>
-          <div id="lsqGrid_multiSelect_pg" class="pagination pagination-centered"></div><br>
-          <div><button id="test_getSelectedRecords">getSelectedRecords</button></div>
-          <div id="lsqGrid_multiSelect_console"></div><br>
+	<!-- foot container -->
+	<div>
+		<hr>
+		<footer>
+			<p>&copy; Company 2012</p>
+		</footer>
+	</div>
+	<!-- /container -->
 
-        </section>
-
-        <!-- Methods
-        ================================================== -->
-        <section id="methods">
-          <div class="page-header">
-            <h1>Methods</h1>
-          </div>
-          <p>For simple transition effects, include bootstrap-transition.js once alongside the other JS files. If you're using the compiled (or minified) bootstrap.js, there is no need to include this&mdash;it's already there.</p>
-          <h3>Methods List</h3>
-          <ul>
-            <li>clear</li>
-            <li>getSelectedRecords</li>
-          </ul>
-          <h3>clear</h3>
-          <p>clear grid data</p>
-        </section>
-
-      </div>
-    </div>
-
-  </div>
-
-
-
-    <!-- Footer
+	<!-- Le javascript
     ================================================== -->
-    <footer class="footer">
-      <div class="container">
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>Designed and built with all the love in the world by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
-        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        <ul class="footer-links">
-          <li><a href="http://blog.getbootstrap.com">Blog</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Issues</a></li>
-          <li class="muted">&middot;</li>
-          <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
-        </ul>
-      </div>
-    </footer>
+	<!-- Placed at the end of the document so the pages load faster -->
+    <script src="./assets/google-code-prettify/prettify.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-transition.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-alert.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-modal.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-dropdown.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-scrollspy.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-tab.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-tooltip.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-popover.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-button.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-collapse.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-carousel.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-typeahead.js"></script>
+	<script src="./assets/bootstrap/js/bootstrap-affix.js"></script>
+	
+	<script type="text/javascript">
+SyntaxHighlighter.autoloader(
+	'applescript			./assets/SyntaxHighlighter-3.0.83/scripts/shBrushAppleScript.js',
+	'actionscript3 as3		./assets/SyntaxHighlighter-3.0.83/scripts/shBrushAS3.js',
+	'bash shell				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushBash.js',
+	'coldfusion cf			./assets/SyntaxHighlighter-3.0.83/scripts/shBrushColdFusion.js',
+	'cpp c					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushCpp.js',
+	'c# c-sharp csharp		./assets/SyntaxHighlighter-3.0.83/scripts/shBrushCSharp.js',
+	'css					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushCss.js',
+	'delphi pascal			./assets/SyntaxHighlighter-3.0.83/scripts/shBrushDelphi.js',
+	'diff patch pas			./assets/SyntaxHighlighter-3.0.83/scripts/shBrushDiff.js',
+	'erl erlang				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushErlang.js',
+	'groovy					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushGroovy.js',
+	'java					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushJava.js',
+	'jfx javafx				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushJavaFX.js',
+	'js jscript javascript	./assets/SyntaxHighlighter-3.0.83/scripts/shBrushJScript.js',
+	'perl pl				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushPerl.js',
+	'php					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushPhp.js',
+	'text plain				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushPlain.js',
+	'py python				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushPython.js',
+	'ruby rails ror rb		./assets/SyntaxHighlighter-3.0.83/scripts/shBrushRuby.js',
+	'scala					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushScala.js',
+	'sql					./assets/SyntaxHighlighter-3.0.83/scripts/shBrushSql.js',
+	'vb vbnet				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushVb.js',
+	'xml xhtml xslt html	./assets/SyntaxHighlighter-3.0.83/scripts/shBrushXml.js'
+);
 
+SyntaxHighlighter.all();
+</script>
 
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    <script src="assets/js/google-code-prettify/prettify.js"></script>
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
-    <script src="assets/js/bootstrap-affix.js"></script>
-    <script src="assets/js/application.js"></script>
-
-
-
-  </body>
+</body>
 </html>
