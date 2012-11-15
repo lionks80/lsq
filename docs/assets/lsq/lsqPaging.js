@@ -4,7 +4,7 @@
 		if (start < limit) {
 			return 1;
 		} else {
-			return start / limit + 1;
+			return  parseInt(start / limit) + 1;
 		}
 	}
 
