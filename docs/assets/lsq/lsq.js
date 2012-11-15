@@ -13,23 +13,21 @@ lsq.form.select.clear = function(elementId) {
 }
 
 lsq.form.select.addOption = function(elementId, value, text) {
-	
+
 	var op = document.createElement("option");
 	op.value = dataArray[i][valueProperty];
 	op.text = dataArray[i][textProperty];
 	document.getElementById(elementId).add(op);
 };
 
-
-
-lsq.form.select.bindOptions = function(elementId, dataArray, valueProperty, textProperty) {
+lsq.form.select.bindOptions = function(elementId, dataArray, valueProperty,
+		textProperty) {
 
 	for ( var i = 0; i < dataArray.length; i++) {
-			var op = document.createElement("option");
-			op.value = dataArray[i][valueProperty];
-			op.text = dataArray[i][textProperty];
-			document.getElementById(elementId).add(op);
-		}
+		var op = document.createElement("option");
+		op.value = dataArray[i][valueProperty];
+		op.text = dataArray[i][textProperty];
+		document.getElementById(elementId).add(op);
 	}
 };
 
@@ -55,8 +53,8 @@ lsq.utils.getParameterByName = function(name) {
 		return decodeURIComponent(results[1].replace(/\+/g, " "));
 };
 
-lsq.ajax = function(method, requestUrl, data, contentType, async,
-		beforeSend, complete) {
+lsq.ajax = function(method, requestUrl, data, contentType, async, beforeSend,
+		complete) {
 
 	var jsonResponse = null;
 
@@ -106,17 +104,14 @@ lsq.ajax = function(method, requestUrl, data, contentType, async,
 
 lsq.cm = {};
 
-lsq.cm.createRestCM = function(baseUrl, listUrl, getUrl, createUrl,
-		updateUrl, deleteUrl) {
+lsq.cm.createRestCM = function(baseUrl, listUrl, getUrl, createUrl, updateUrl,
+		deleteUrl) {
 
 	var requestUrl_list = lsq.string.hasText(listUrl) ? listUrl : baseUrl;
 	var requestUrl_get = lsq.string.hasText(getUrl) ? getUrl : baseUrl;
-	var requestUrl_create = lsq.string.hasText(createUrl) ? createUrl
-			: baseUrl;
-	var requestUrl_update = lsq.string.hasText(updateUrl) ? updateUrl
-			: baseUrl;
-	var requestUrl_delete = lsq.string.hasText(deleteUrl) ? deleteUrl
-			: baseUrl;
+	var requestUrl_create = lsq.string.hasText(createUrl) ? createUrl : baseUrl;
+	var requestUrl_update = lsq.string.hasText(updateUrl) ? updateUrl : baseUrl;
+	var requestUrl_delete = lsq.string.hasText(deleteUrl) ? deleteUrl : baseUrl;
 
 	this.list = function(data) {
 		return lsq.ajax('GET', requestUrl_list, data);
@@ -131,7 +126,8 @@ lsq.cm.createRestCM = function(baseUrl, listUrl, getUrl, createUrl,
 	};
 
 	this.update = function(key, data) {
-		return lsq.ajax('PUT', requestUrl_update + "/" + key, data, 'application/json');
+		return lsq.ajax('PUT', requestUrl_update + "/" + key, data,
+				'application/json');
 
 	};
 

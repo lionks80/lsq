@@ -9,7 +9,6 @@
 
 <!-- Le styles -->
 <link href="./assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-<link href="./assets/google-code-prettify/prettify.css" rel="stylesheet">
 <style type="text/css">
 	body { padding-top: 60px; padding-bottom: 40px; }
 	.sidebar-nav { padding: 9px 0; }
@@ -17,10 +16,6 @@
 </style>
 <link href="./assets/bootstrap//css/bootstrap-responsive.css" rel="stylesheet">
 <script src="./assets/jquery.js"></script>
-
-<script type="text/javascript" src="./assets/SyntaxHighlighter-3.0.83/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
-<script type="text/javascript" src="./assets/SyntaxHighlighter-3.0.83/scripts/shCore.js"></script>
-<script type="text/javascript" src="./assets/SyntaxHighlighter-3.0.83/scripts/shAutoloader.js"></script>
 <link type="text/css" rel="stylesheet" href="./assets/SyntaxHighlighter-3.0.83/styles/shCore.css"/>
 <link type="text/css" rel="Stylesheet" href="./assets/SyntaxHighlighter-3.0.83/styles/shThemeDefault.css" />
 
@@ -48,7 +43,7 @@
 						<li><a href="./index.html">Home</a></li>
 						<li class="active"><a href="./lsq.html">lsq</a></li>
 						<li><a href="./lsqGrid.html">lsqGrid</a></li>
-						<li><a href="./lsqPaging">lsqPaging</a></li>
+						<li><a href="./lsqPaging.html">lsqPaging</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -63,6 +58,7 @@
 				<div class="well span3 sidebar-nav" data-spy="affix">
 					<ul class="nav nav-list">
 						<li><a href="#about_lsq">About lsq</a></li>
+						<li class="nav-header">Utils</li>
 						<li><a href="#lsq_sting">lsq.string</a></li>
 						<li><a href="#lsq_form">lsq.form</a></li>
 						<li><a href="#lsq_utils">lsq.utils</a></li>
@@ -269,11 +265,11 @@
 // create testCM
 var testCM = lsq.cm.createRestCM('/book');
 
-//[GET request] "/book" with data
+//[GET request with queryString data] "/book" with data
 testCM.list(data);
 
-//[GET request] "/book/123"
-testCM.get('123');
+//[GET request with queryString data] "/book/123"
+testCM.get('123', data);
 
 //[POST request with 'application/json' type data] "/book"
 testCM.create(key, data);
@@ -308,7 +304,6 @@ testCM.del('123');
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-    <script src="./assets/google-code-prettify/prettify.js"></script>
 	<script src="./assets/bootstrap/js/bootstrap-transition.js"></script>
 	<script src="./assets/bootstrap/js/bootstrap-alert.js"></script>
 	<script src="./assets/bootstrap/js/bootstrap-modal.js"></script>
@@ -323,6 +318,10 @@ testCM.del('123');
 	<script src="./assets/bootstrap/js/bootstrap-typeahead.js"></script>
 	<script src="./assets/bootstrap/js/bootstrap-affix.js"></script>
 	
+	<script type="text/javascript" src="./assets/SyntaxHighlighter-3.0.83/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+    <script type="text/javascript" src="./assets/SyntaxHighlighter-3.0.83/scripts/shCore.js"></script>
+    <script type="text/javascript" src="./assets/SyntaxHighlighter-3.0.83/scripts/shAutoloader.js"></script>
+
 	<script type="text/javascript">
 SyntaxHighlighter.autoloader(
 	'applescript			./assets/SyntaxHighlighter-3.0.83/scripts/shBrushAppleScript.js',
@@ -349,6 +348,9 @@ SyntaxHighlighter.autoloader(
 	'vb vbnet				./assets/SyntaxHighlighter-3.0.83/scripts/shBrushVb.js',
 	'xml xhtml xslt html	./assets/SyntaxHighlighter-3.0.83/scripts/shBrushXml.js'
 );
+
+SyntaxHighlighter.config.strings.viewSource = "view my source!!!!";
+SyntaxHighlighter.config.strings.aboutDialog = "kakaka";
 
 SyntaxHighlighter.all();
 </script>

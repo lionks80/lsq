@@ -17,13 +17,13 @@
 
 			$(this).click(function() {
 				
-				var setRowSelect = function(row, cssRowSelected, boolean) {
+				var setRowSelect = function(row, cssClassRowSelected, boolean) {
 
 					if (boolean == false) {
-						$(row).removeClass(cssRowSelected);
+						$(row).removeClass(cssClassRowSelected);
 						$(row).find('td input:checkbox').attr('checked', false);
 					} else {
-						$(row).addClass(cssRowSelected);
+						$(row).addClass(cssClassRowSelected);
 						$(row).find('td input:checkbox').attr('checked', true);
 					}
 
@@ -34,23 +34,23 @@
 					if (setting.multiSelect == true) {
 
 						// 멀티 셀렉트인 경우
-						if ($(this).hasClass(setting.cssRowSelected) == true) {
-							setRowSelect($(this), setting.cssRowSelected, false);
+						if ($(this).hasClass(setting.cssClassRowSelected) == true) {
+							setRowSelect($(this), setting.cssClassRowSelected, false);
 						} else {
-							setRowSelect($(this), setting.cssRowSelected, true);
+							setRowSelect($(this), setting.cssClassRowSelected, true);
 						}
 
 						selectChange = true;
 
 					} else {
 						// 싱글 셀렉트인 경우
-						if ($(this).hasClass(setting.cssRowSelected) != true) {
+						if ($(this).hasClass(setting.cssClassRowSelected) != true) {
 
-							mainObject.find('tbody').find( 'tr.' + setting.cssRowSelected).each(
+							mainObject.find('tbody').find( 'tr.' + setting.cssClassRowSelected).each(
 									function() {
-										setRowSelect($(this), setting.cssRowSelected, false);
+										setRowSelect($(this), setting.cssClassRowSelected, false);
 									});
-							setRowSelect($(this), setting.cssRowSelected, true);
+							setRowSelect($(this), setting.cssClassRowSelected, true);
 							
 							selectChange = true;
 						}
@@ -74,8 +74,8 @@
 	privateMethods.getDefaultSetting = function() {
 		return {
 			columns : null,
-			cssTable : "lsqGrid",
-			cssRowSelected : "select",
+			cssClassTable : ["lsqGrid"],
+			cssClassRowSelected : "selected",
 			useSelect : false,
 			multiSelect : false,
 			listener : {
@@ -88,19 +88,19 @@
 	}
 
 	privateMethods.clear = function(mainObject) {
-		mainObject.data('gridData', null);
 		if (mainObject.data('gridSetting').multiSelect) {
 			mainObject.find('thead tr input:checkbox').attr('checked', false);
 		}
 		mainObject.find('tbody').children().remove();
+		mainObject.data('gridData', null);
 	}
 
-	privateMethods.selectChange = function(mainObjectect) {
+	privateMethods.selectChange = function(mainObject) {
 
-		var setting = mainObjectect.data('gridSetting');
-		var gridData = mainObjectect.data('gridData');
-		var selectedTargets = mainObjectect.find('tbody tr.'
-				+ setting.cssRowSelected);
+		var setting = mainObject.data('gridSetting');
+		var gridData = mainObject.data('gridData');
+		var selectedTargets = mainObject.find('tbody tr.'
+				+ setting.cssClassRowSelected);
 
 		var selectedRecords = new Array(selectedTargets.length);
 
@@ -134,9 +134,11 @@
 					$mainObject.data('gridSetting', setting);
 
 					// 테이블 생성 적용
+					
+					var cssClassTable = setting.cssClassTable.join(" ");
 					$mainObject
 							.append($('<table class=\"'
-									+ setting.cssTable
+									+ cssClassTable
 									+ '\"><thead><tr></tr></thead><tbody></tbody></table>'));
 
 					if (setting.useSelect == true) {
@@ -150,11 +152,18 @@
 										|| $(this).attr('checked') == 'checked' ? true
 										: false;
 
-								$(tbody).find('tr').each(function() {
-									setRowSelect($(this), checked);
+								$mainObject.find('tbody tr').each(function() {
+									
+									if (checked == false) {
+										$(this).removeClass(setting.cssClassRowSelected);
+										$(this).find('td input:checkbox').attr('checked', false);
+									} else {
+										$(this).addClass(setting.cssClassRowSelected);
+										$(this).find('td input:checkbox').attr('checked', true);
+									}
 								});
 
-								privateMethods.selectChange();
+								privateMethods.selectChange($mainObject);
 							}
 							var checkBox = $('<input type=\"checkbox\">')
 									.change(checkBoxHeaderChange);
@@ -168,8 +177,16 @@
 					// column_header 생성
 					for ( var i = 0; i < setting.columns.length; i++) {
 
-						var th = $('<th>' + setting.columns[i].header + '</th>')
-								.width(setting.columns[i].width);
+						var th = $('<th>' + setting.columns[i].header + '</th>');
+						
+						if (setting.columns[i].width) {
+							th.width(setting.columns[i].width);
+						}
+						
+						if (setting.columns[i].headerAlign) {
+							th.css("text-align", setting.columns[i].headerAlign);
+						}
+
 						$mainObject.find('thead tr').append(th);
 
 					}
@@ -207,13 +224,17 @@
 					if (setting.columns[j].hidden != true) {
 						var td = $('<td></td>');
 						if (setting.columns[j].render != null) {
-							$(td)
+							td
 									.append(
 											setting.columns[j]
-													.render(gridData[i]));
+													.render(gridData[i], i));
 						} else {
-							$(td).append(
+							td.append(
 									gridData[i][setting.columns[j].dataIndex]);
+						}
+						
+						if (setting.columns[j].dataAlign) {
+							td.css("text-align", setting.columns[j].dataAlign);
 						}
 
 						$(tr).append(td);
@@ -242,7 +263,7 @@
 		var gridData = $(this).data('gridData');
 		var setting = $(this).data('gridSetting');
 
-		var selectedTarget = $(this).find('tbody tr.' + setting.cssRowSelected);
+		var selectedTarget = $(this).find('tbody tr.' + setting.cssClassRowSelected);
 
 		var selectedRecord = new Array(selectedTarget.length);
 
