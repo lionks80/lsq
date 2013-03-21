@@ -145,8 +145,8 @@
 						}).css("cursor", "pointer");
 					}
 
-				})
-	}
+				});
+	};
 
 	$.fn.lsqPaging = function(method) {
 

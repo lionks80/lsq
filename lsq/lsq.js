@@ -10,7 +10,7 @@ lsq.form.select = {};
 
 lsq.form.select.clear = function(elementId) {
 	$('#' + elementId).find('option').remove().end();
-}
+};
 
 lsq.form.select.addOption = function(elementId, value, text) {
 

@@ -27,7 +27,7 @@
 						$(row).find('td input:checkbox').attr('checked', true);
 					}
 
-				}
+				};
 
 				if (setting.useSelect == true) {
 
@@ -85,7 +85,7 @@
 				}
 			}
 		};
-	}
+	};
 
 	privateMethods.clear = function(mainObject) {
 		if (mainObject.data('gridSetting').multiSelect) {
@@ -93,7 +93,7 @@
 		}
 		mainObject.find('tbody').children().remove();
 		mainObject.data('gridData', null);
-	}
+	};
 
 	privateMethods.selectChange = function(mainObject) {
 
@@ -112,7 +112,7 @@
 			setting.listener.selectChange(selectedRecords);
 		}
 
-	}
+	};
 
 	/**
 	 * Public Methods
@@ -164,7 +164,7 @@
 								});
 
 								privateMethods.selectChange($mainObject);
-							}
+							};
 							var checkBox = $('<input type=\"checkbox\">')
 									.change(checkBoxHeaderChange);
 
@@ -190,8 +190,8 @@
 						$mainObject.find('thead tr').append(th);
 
 					}
-				})
-	}
+				});
+	};
 
 	publicMethods.dataBind = function(data) {
 
@@ -245,8 +245,8 @@
 			}
 
 			privateMethods.eventBind($mainObject);
-		})
-	}
+		});
+	};
 
 	publicMethods.clear = function() {
 
@@ -273,7 +273,7 @@
 
 		return selectedRecord;
 
-	}
+	};
 
 	$.fn.lsqGrid = function(methodName) {
 
