@@ -1,0 +1,149 @@
+/* Body and structure
+-------------------------------------------------- */
+
+body {
+  position: relative;
+  padding-top: 40px;
+}
+
+/* Code in headings */
+h3 code {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+
+
+/* Tweak navbar brand link to be super sleek
+-------------------------------------------------- */
+
+body > .navbar {
+  font-size: 13px;
+}
+
+/* Change the docs' brand */
+body > .navbar .brand {
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 20px;
+  font-weight: bold;
+  color: #FFF;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
+}
+body > .navbar .brand:hover {
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+}
+
+/* bc-submenu for Docs
+-------------------------------------------------- */
+
+.bc-submenu {
+  width: 190px;
+  margin: 0 0 0;
+  padding: 0;
+  background-color: #fff;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+          box-shadow: 0 1px 4px rgba(0,0,0,.065);
+}
+
+.bc-submenu > .active > a,
+.bc-submenu > .active > a:hover,
+.bc-submenu > .active > a:focus {
+  color: #ffffff;
+  background-color: #0088cc;
+}
+
+.bc-submenu > li > a {
+  display: block;
+  width: 190px \9;
+  margin: 0 0 -1px;
+  padding: 8px 14px;
+  border: 1px solid #e5e5e5;
+}
+.bc-submenu > li:first-child > a {
+  -webkit-border-radius: 6px 6px 0 0;
+     -moz-border-radius: 6px 6px 0 0;
+          border-radius: 6px 6px 0 0;
+}
+.bc-submenu > li:last-child > a {
+  -webkit-border-radius: 0 0 6px 6px;
+     -moz-border-radius: 0 0 6px 6px;
+          border-radius: 0 0 6px 6px;
+}
+.bc-submenu > .active > a {
+  position: relative;
+  z-index: 2;
+  padding: 9px 15px;
+  border: 0;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+     -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+          box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+}
+/* Chevrons */
+.bc-submenu .icon-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+.bc-submenu > li > a:hover {
+  background-color: #f5f5f5; 
+}
+.bc-submenu a:hover .icon-chevron-right {
+  opacity: .5;
+}
+.bc-submenu .active .icon-chevron-right,
+.bc-submenu .active a:hover .icon-chevron-right {
+  background-image: url(../js/bootstrap/img/glyphicons-halflings-white.png);
+  opacity: 1;
+}
+.bc-submenu.affix {
+  top: 40px;
+}
+.bc-submenu.affix-bottom {
+  position: absolute;
+  top: auto;
+  bottom: 270px;
+}
+
+/* lsqGrid
+-------------------------------------------------- */
+.lsqGrid {
+	width: 100%;
+	border: 1px solid #DDD;
+	border-collapse: collapse;
+}
+
+.lsqGrid thead {
+	background-color: #EFEFEF;
+}
+
+.lsqGrid thead th {
+	padding: 8px;
+	text-align: left;
+}
+
+.lsqGrid tbody tr:nth-child(2n) {
+	background-color: #f8f8f8;
+}
+
+.lsqGrid tbody tr:HOVER {
+	background-color: #f5f5f5;
+}
+
+.lsqGrid tbody tr.selected {
+	background-color: #efe0e0;
+}
+
+.lsqGrid tbody td {
+	padding: 8px;
+}
