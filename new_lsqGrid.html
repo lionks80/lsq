@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript · Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="assets/js/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/basic.css" rel="stylesheet">
+    <!-- <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"> -->
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./assets/js/SyntaxHighlighter-3.0.83/styles/shCore.css"/>
+	<link type="text/css" rel="Stylesheet" href="./assets/js/SyntaxHighlighter-3.0.83/styles/shThemeDefault.css" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+  </head>
+
+  <body data-spy="scroll" data-target=".bc-submenu-div" data-twttr-rendered="true">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse  navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+        <div class="row">
+        	<div class="span3">
+        		<a class="brand" href="./index.html">[ lsq-lib ]</a>
+       		</div>
+        	<div class="span9">
+
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+          <div class="nav-collapse collapse">
+            <ul class="nav navbar-left-align">
+				<li><a href="./index.html">Home</a></li>
+				<li><a href="./lsq.html">lsq</a></li>
+				<li><a href="./lsqGrid.html">lsqGrid</a></li>
+				<li><a href="./lsqPaging.html">lsqPaging</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+              	</div>
+        </div>
+    </div>
+
+	<!-- PAGE CONTENTS
+	================================================== -->
+	<div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bc-submenu-div">
+        <ul class="nav bc-submenu" data-spy="affix" style="margin-top: 10px;">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#demo1">demo1 - no select</a></li>
+            <li><a href="#demo2">demo2 - single select</a></li>
+            <li><a href="#demo3">demo3 - multi select</a></li>
+            <li><a href="#install">Install</a></li>
+            <li><a href="#create_grid">Create Grid</a></li>
+            <li><a href="#methods">Methods</a></li>
+        </ul>
+      </div>
+      <div class="span9">
+
+        <!-- Overview
+        ================================================== -->
+        <section id="overview">
+          <div class="page-header">
+			<h1>lsqGrid</h1>
+          </div>
+          <p>jQuery Plugin.</p>
+        </section>
+
+<!-- SIMPLE DEMO -->
+<section id="demo1">
+    <h2>Demo1 <small>- no select</small></h2><hr>
+    <h3>Example Data</h3>
+    <pre class="brush : js;">
+    // Sample Data
+    var people = [ { "id" : 1, "name" : '이철수', "age" : 21 },
+                   { "id" : 2, "name" : '김영희', "age" : 33 }, 
+                   { "id" : 3, "name" : '장동민', "age" : 24 }, 
+                   { "id" : 4, "name" : '홍길동', "age" : 40 }, 
+                   { "id" : 5, "name" : '이순신', "age" : 30 }, 
+                   { "id" : 6, "name" : '조악필', "age" : 20 } ];
+    </pre>
+
+    <h3>Create Grid & Data Bind</h3>
+    <pre class="brush : js;">
+    /** DEMO1 **/
+    // Create Grid
+    $('#lsqGrid_demo1').lsqGrid({
+        columns : [ {
+            header : 'ID',
+            dataIndex : 'id',
+            headerAlign : 'right',
+            dataAlign : 'right',
+            width : 50
+        }, {
+            header : 'Name',
+            dataIndex : 'name'
+        }, {
+            header : 'Age',
+            dataIndex : 'age'
+        } ],
+        listener : {
+            rowClick : function(rowIdx, record) {
+                alert('rowIdx: ' + rowIdx + ', name: ' + record.name);
+            }
+        }
+    });
+    
+    // Data Bind
+    $('#lsqGrid_demo1').lsqGrid('dataBind', people);
+    
+    $('#btn_demo1_clear').click(function() {
+        $('#lsqGrid_demo1').lsqGrid('clear');
+    })
+    $('#btn_demo1_dataBind').click(function() {
+        $('#lsqGrid_demo1').lsqGrid('dataBind', people);
+    })
+    </pre>
+	<h3>Demo1 - Result</h3>
+	<div class="well">
+	    <div id="lsqGrid_demo1"></div>
+	    <div>
+	        <h5>test</h5>
+	        <ul><li>headerAlign : check ID header align</li></ul>
+	        <ul><li>dataAlign : check Name rows align</li></ul>
+	        <ul><li>rowClick : check row click Event</li></ul>
+	        <ul><li><button id="btn_demo1_clear">clear Test</button></li></ul>
+	        <ul><li><button id="btn_demo1_dataBind">dataBind Test</button></li></ul>
+	    </div>
+	</div>
+</section>
+
+<!-- Single Select DEMO -->
+<section id="demo2">
+<h2>Demo2  <small>- single select</small></h2><hr>
+    <h3>Example Data</h3>
+    <pre class="brush : js;">
+    // Sample Data
+    var people = [ { "id" : 1, "name" : '이철수', "age" : 21 },
+                   { "id" : 2, "name" : '김영희', "age" : 33 }, 
+                   { "id" : 3, "name" : '장동민', "age" : 24 }, 
+                   { "id" : 4, "name" : '홍길동', "age" : 40 }, 
+                   { "id" : 5, "name" : '이순신', "age" : 30 }, 
+                   { "id" : 6, "name" : '조악필', "age" : 20 } ];
+    </pre>
+
+    <h3>Create Grid & Data Bind</h3>
+    <pre class="brush : js;">
+    /** DEMO2 **/
+    var num = 100;
+    var ASC = true;
+    // Create Grid
+    $('#lsqGrid_demo2').lsqGrid({
+        columns : [ {
+            header : '#',
+            headerAlign : 'center',
+            dataAlign : 'center',
+            width : 50,
+            render : function(record, rowIdx) {
+                
+                if (ASC) {
+                    return num - rowIdx;
+                } else {
+                    return num + rowIdx;
+                }
+                
+            }
+        },{
+            header : 'ID',
+            dataIndex : 'id'
+        }, {
+            header : 'Name',
+            dataIndex : 'name'
+        }, {
+            header : 'Age',
+           render : function(record, rowIdx) {
+               return record.age + ' 세';
+           }
+        } ],
+        useSelect : true,
+        multiSelect : false,
+        listener : {
+            selectChange : function(selectedRecords) {
+                $('#lsqGrid_demo2_selectChange').text('selected: ' + selectedRecords[0].name);
+            }
+        }
+    });
+    
+    // Data Bind
+    $('#lsqGrid_demo2').lsqGrid('dataBind', people);
+    </pre>
+    <h3>Demo2 - Result</h3>
+    <div class="well">
+        <div id="lsqGrid_demo2"></div>
+        <div id="lsqGrid_demo2_selectChange"></div>
+        <div>
+            <h5>test</h5>
+            <ul><li>selectChange : check selectChange Event</li></ul>
+            <ul><li>row No : check how can make row number</li></ul>
+        </div>
+    </div>
+</section>
+
+<!-- Multi Select DEMO -->
+<section id="demo3">
+<h2>Demo3 <small>- multi select</small></h2><hr>
+    <h3>Example Data</h3>
+    <pre class="brush : js;">
+    // Sample Data
+    var people = [ { "id" : 1, "name" : '이철수', "age" : 21 },
+                   { "id" : 2, "name" : '김영희', "age" : 33 }, 
+                   { "id" : 3, "name" : '장동민', "age" : 24 }, 
+                   { "id" : 4, "name" : '홍길동', "age" : 40 }, 
+                   { "id" : 5, "name" : '이순신', "age" : 30 }, 
+                   { "id" : 6, "name" : '조악필', "age" : 20 } ];
+    </pre>
+
+    <h3>Create Grid & Data Bind</h3>
+    <pre class="brush : css;">
+        /* add css class */
+	    .selected { background-color: #00AAEE; }
+    </pre>
+    <pre class="brush : js;">
+    /** DEMO3 **/
+    // Create Grid
+    $('#lsqGrid_demo3').lsqGrid({
+        columns : [ {
+            header : 'ID',
+            dataIndex : 'id'
+        }, {
+            header : 'Name',
+            dataIndex : 'name'
+        }, {
+            header : 'Age',
+           render : function(record, rowIdx) {
+               return record.age + ' 세';
+           }
+        } ],
+        cssClassTable : ["table", "table-bordered"],
+        cssClassRowSelected : "selected",
+        useSelect : true,
+        multiSelect : true
+    });
+    
+    // Data Bind
+    $('#lsqGrid_demo3').lsqGrid('dataBind', people);
+    $('#btn_demo3_getSelectedRecords').click(function() {
+        var names = '';
+        
+        var selectedRecords = $('#lsqGrid_demo3').lsqGrid('getSelectedRecords');
+        
+        for (var i = 0 ; i < selectedRecords.length ; i++ ) {
+            names += '[' + selectedRecords[i].name + ']';
+        }
+        
+        alert(names);
+    });
+    </pre>
+    <h3>Demo3 - Result</h3>
+    <div class="well">
+        <div id="lsqGrid_demo3"></div>
+        <div>
+            <h5>test</h5>
+            <ul><li>selectChange : check selectChange Event</li></ul>
+            <ul><li>row No : check how can make row number</li></ul>
+            <ul><li>css Class: table and seleted class. ["table", "table-bordered"] - bootstrap</li></ul>
+            <ul><li>render: check age column render</li></ul>
+            <ul><li><button id="btn_demo3_getSelectedRecords">getSelectedRecordMethod Test</button></li></ul>
+        </div>
+    </div>
+</section>
+
+<br><br>
+<h1>Usage</h1><hr>
+<section id="install">
+    <h2>Install</h2><hr>
+    <pre class="brush : html">
+		
+		<!-- 만약 사용자 정의의 테이블 css를 사용할 경우 로드하지 않아도 됨 -->
+		<link type="text/css" rel="stylesheet" href="lsqGrid.css"/>
+		
+		<script src="lsqGrid.js"></script>
+    </pre>
+</section>
+<section id="create_grid">
+
+    <h2>Create</h2><hr>
+    <pre class="brush : js;">$('target').lsqGrid(options)</pre>
+    <h3>default options</h3>
+    <pre class="brush : js;">
+    {
+        columns : null,
+        cssClassTable : ["lsqGrid"],
+        cssClassRowSelected : "selected",
+        useSelect : false,
+        multiSelect : false,
+        listener : {
+            rowClick : function(rowIdx, record) {
+            },
+            selectChange : function(selectedRecords) {
+            }
+        }
+    }
+    </pre>
+   <h3>options</h3>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>columns</td>
+                <td>column Array</td>
+                <td>각 컬럼들을 정의한다.</td>
+            </tr>
+            <tr>
+                <td>cssClassTable</td>
+                <td>string array</td>
+                <td>table에 적용될 css Class 들을 정의.</td>
+            </tr>
+            <tr>
+                <td>cssRowSelected</td>
+                <td>string</td>
+                <td>선택된 row에 적용할 css Class 이름을 정의.</td>
+            </tr>
+            <tr>
+                <td>useSelect</td>
+                <td>boolean</td>
+                <td>row select mode 사용 여부.</td>
+            </tr>
+            <tr>
+                <td>multiSelect</td>
+                <td>boolean</td>
+                <td>row select 사용 시 multi select 사용 여부</td>
+            </tr>
+            <tr>
+                <td>listener</td>
+                <td>json object </td>
+                <td>event listener 클래스</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>options.column</h3>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>header</td>
+                <td>string</td>
+                <td>헤더명.</td>
+            </tr>
+            <tr>
+                <td>headerAlign</td>
+                <td>string</td>
+                <td>헤더 정렬 ['left', 'center', 'right'].</td>
+            </tr>
+            <tr>
+                <td>dataIndex</td>
+                <td>string</td>
+                <td>바인딩 될 데이터의 프로퍼티명</td>
+            </tr>
+            <tr>
+                <td>dataAlign</td>
+                <td>string</td>
+                <td>데이터 정렬 ['left', 'center', 'right'].</td>
+            </tr>
+            <tr>
+                <td>width</td>
+                <td>mixed</td>
+                <td>컬럼 넓이</td>
+            </tr>
+            <tr>
+                <td>render</td>
+                <td>function(record, rowIndex)</td>
+                <td>해당 셀에 append 시킬 문자 및 객체를 반환하도록 작성한다.</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>options.listener</h3>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>rowClick</td>
+                <td>function(rowIdx, record)</td>
+                <td>로우 클릭 시 동작함수</td>
+            </tr>
+            <tr>
+                <td>selectChange</td>
+                <td>function(selectedRecords)</td>
+                <td>select 사용 시 select가 변경 될 시 동장함수</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</section>
+
+
+<section id="methods">
+
+   <h2> Methods </h2><hr>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Return</th>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>void</td>
+                <td>$(target).lsqGrid('dataBind', data)</td>
+                <td>json object array data를 그리드에 바인딩.</td>
+            </tr>
+            <tr>
+                <td>void</td>
+                <td>$(target).lsqGrid('clear')</td>
+                <td>현재 그리드의 데이터를 모두 초기화.</td>
+            </tr>
+            <tr>
+                <td>record array</td>
+                <td>$(target).lsqGrid('getSelectedRecords')</td>
+                <td>현재 선택된 로우들의 데이터를 반환.</td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
+
+      </div>
+    </div>
+
+  </div>
+	<!-- /PAGE CONTENTS
+	================================================== -->
+
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+		<div class="container">
+			<hr>
+			<p>&copy; Link4h 2012</p>
+		</div>
+    </footer>
+   	<!-- /Footer
+    ================================================== -->
+
+    <!-- Le javascript
+    ================================================== -->
+    
+    <script src="./assets/js/jquery.js"></script>
+    
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    
+    <script src="assets/js/bootstrap/js/bootstrap.js"></script>
+    <script src="assets/js/holder/holder.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    
+	<script src="./assets/js/lsq/lsq.js"></script>
+	<script src="./assets/js/lsq/lsqGrid.js"></script>
+	
+	<script type="text/javascript" src="./assets/js/SyntaxHighlighter-3.0.83/scripts/XRegExp.js"></script> 
+	<!-- XRegExp is bundled with the final shCore.js during build -->
+    <script type="text/javascript" src="./assets/js/SyntaxHighlighter-3.0.83/scripts/shCore.js"></script>
+    <script type="text/javascript" src="./assets/js/SyntaxHighlighter-3.0.83/scripts/shAutoloader.js"></script>
+
+	<script type="text/javascript">
+		SyntaxHighlighter.autoloader(
+			'applescript			./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushAppleScript.js',
+			'actionscript3 as3		./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushAS3.js',
+			'bash shell				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushBash.js',
+			'coldfusion cf			./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushColdFusion.js',
+			'cpp c					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushCpp.js',
+			'c# c-sharp csharp		./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushCSharp.js',
+			'css					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushCss.js',
+			'delphi pascal			./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushDelphi.js',
+			'diff patch pas			./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushDiff.js',
+			'erl erlang				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushErlang.js',
+			'groovy					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushGroovy.js',
+			'java					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushJava.js',
+			'jfx javafx				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushJavaFX.js',
+			'js jscript javascript	./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushJScript.js',
+			'perl pl				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushPerl.js',
+			'php					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushPhp.js',
+			'text plain				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushPlain.js',
+			'py python				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushPython.js',
+			'ruby rails ror rb		./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushRuby.js',
+			'scala					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushScala.js',
+			'sql					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushSql.js',
+			'vb vbnet				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushVb.js',
+			'xml xhtml xslt html	./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushXml.js'
+		);
+
+		SyntaxHighlighter.config.strings.viewSource = "view my source!!!!";
+		SyntaxHighlighter.config.strings.aboutDialog = "kakaka";
+		
+		SyntaxHighlighter.all();
+	</script>
+
+    <script>
+    </script>
+
+  </body>
+</html>
