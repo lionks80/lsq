@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript · Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="assets/js/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/basic.css" rel="stylesheet">
+    <!-- <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"> -->
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./assets/js/SyntaxHighlighter-3.0.83/styles/shCore.css"/>
+	<link type="text/css" rel="Stylesheet" href="./assets/js/SyntaxHighlighter-3.0.83/styles/shThemeDefault.css" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+  </head>
+
+  <body data-spy="scroll" data-target=".bc-submenu-div" data-twttr-rendered="true">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse  navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+        <div class="row">
+        	<div class="span3">
+        		<a class="brand" href="./index.html">[ lsq-lib ]</a>
+       		</div>
+        	<div class="span9">
+
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+          <div class="nav-collapse collapse">
+            <ul class="nav navbar-left-align">
+				<li><a href="./index.html">Home</a></li>
+				<li><a href="./lsq.html">lsq</a></li>
+				<li><a href="./lsqGrid.html">lsqGrid</a></li>
+				<li><a href="./lsqPaging.html">lsqPaging</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+              	</div>
+        </div>
+    </div>
+
+	<!-- PAGE CONTENTS
+	================================================== -->
+	<div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bc-submenu-div">
+        <ul class="nav bc-submenu" data-spy="affix" style="margin-top: 10px;">
+            <li><a href="#overview">Overview</a></li>
+			<li><a href="#demo">Demo</a></li>
+			<li><a href="#install">Install</a></li>
+        </ul>
+      </div>
+      <div class="span9">
+
+        <!-- Overview
+        ================================================== -->
+        <section id="overview">
+          <div class="page-header">
+			<h1>lsqPaging</h1>
+          </div>
+          <p>jQuery Plugin.</p>
+        </section>
+
+<section id="demo">
+
+    <h2>Demo</h2><hr>
+    <pre class="brush : js;">
+           $('#lsqPaging_demo').lsqPaging({
+                "start" : 59,
+                "limit" : 15,
+                "totalCount" : 300,
+                "displayCount" : 9,
+                "trigger" : function(page) {
+                    alert(page);
+            }})
+    </pre>
+	<div class="well">
+      <div id="lsqPaging_demo" class="pagination pagination-centered"></div>
+    </div>
+</section>
+
+<section id="install">
+    <h2>Install</h2><hr>
+    <p><strong>this demo use bootstrap css</strong></p>
+    <pre class="brush : html">
+        &#60;script src="lsqPaging.js"&#62;&#60;/script&#62;
+    </pre>
+    
+    <h3>options</h3><hr>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>start</td>
+                <td>integer</td>
+                <td>현재 게시물 시작 번호</td>
+            </tr>
+            <tr>
+                <td>limit</td>
+                <td>integer</td>
+                <td>페이지 출력 수</td>
+            </tr>
+            <tr>
+                <td>totalCount</td>
+                <td>integer</td>
+                <td>전체 게시물 수</td>
+            </tr>
+            <tr>
+                <td>displayCount</td>
+                <td>integer</td>
+                <td>페이징 버튼 표시 수</td>
+            </tr>
+            <tr>
+                <td>trigger</td>
+                <td>function(page)</td>
+                <td>페이징 버튼들을 클릭했을 시 동작</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+      </div>
+    </div>
+
+  </div>
+	<!-- /PAGE CONTENTS
+	================================================== -->
+
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+		<div class="container">
+			<hr>
+			<p>&copy; Link4h 2012</p>
+		</div>
+    </footer>
+   	<!-- /Footer
+    ================================================== -->
+
+    <!-- Le javascript
+    ================================================== -->
+    
+    <script src="./assets/js/jquery.js"></script>
+    
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    
+    <script src="assets/js/bootstrap/js/bootstrap.js"></script>
+    <script src="assets/js/holder/holder.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    
+	<script src="./assets/js/lsq/lsq.js"></script>
+	<script src="./assets/js/lsq/lsqGrid.js"></script>
+	<script src="./assets/js/lsq/lsqPaging.js"></script>
+	
+	<script type="text/javascript" src="./assets/js/SyntaxHighlighter-3.0.83/scripts/XRegExp.js"></script> 
+	<!-- XRegExp is bundled with the final shCore.js during build -->
+    <script type="text/javascript" src="./assets/js/SyntaxHighlighter-3.0.83/scripts/shCore.js"></script>
+    <script type="text/javascript" src="./assets/js/SyntaxHighlighter-3.0.83/scripts/shAutoloader.js"></script>
+
+	<script type="text/javascript">
+		SyntaxHighlighter.autoloader(
+			'applescript			./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushAppleScript.js',
+			'actionscript3 as3		./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushAS3.js',
+			'bash shell				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushBash.js',
+			'coldfusion cf			./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushColdFusion.js',
+			'cpp c					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushCpp.js',
+			'c# c-sharp csharp		./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushCSharp.js',
+			'css					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushCss.js',
+			'delphi pascal			./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushDelphi.js',
+			'diff patch pas			./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushDiff.js',
+			'erl erlang				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushErlang.js',
+			'groovy					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushGroovy.js',
+			'java					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushJava.js',
+			'jfx javafx				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushJavaFX.js',
+			'js jscript javascript	./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushJScript.js',
+			'perl pl				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushPerl.js',
+			'php					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushPhp.js',
+			'text plain				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushPlain.js',
+			'py python				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushPython.js',
+			'ruby rails ror rb		./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushRuby.js',
+			'scala					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushScala.js',
+			'sql					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushSql.js',
+			'vb vbnet				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushVb.js',
+			'xml xhtml xslt html	./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushXml.js'
+		);
+
+		SyntaxHighlighter.config.strings.viewSource = "view my source!!!!";
+		SyntaxHighlighter.config.strings.aboutDialog = "kakaka";
+		
+		SyntaxHighlighter.all();
+	</script>
+
+    <script type="text/javascript">
+		$(function() {
+			
+		   $('#lsqPaging_demo').lsqPaging({
+		        "start" : 59,
+		        "limit" : 15,
+		        "totalCount" : 300,
+		        "displayCount" : 9,
+		        "trigger" : function(page) {
+		            alert(page);
+		    }})
+		})
+	</script>
+
+  </body>
+</html>
