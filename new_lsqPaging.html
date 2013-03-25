@@ -101,19 +101,6 @@
                     alert(page);
             }})
     </pre>
-	<script type="text/javascript">
-		$(function() {
-			
-		   $('#lsqPaging_demo').lsqPaging({
-		        "start" : 59,
-		        "limit" : 15,
-		        "totalCount" : 300,
-		        "displayCount" : 9,
-		        "trigger" : function(page) {
-		            alert(page);
-		    }})
-		})
-	</script>
 	<div class="well">
       <div id="lsqPaging_demo" class="pagination pagination-centered"></div>
     </div>
@@ -199,6 +186,7 @@
     
 	<script src="./assets/js/lsq/lsq.js"></script>
 	<script src="./assets/js/lsq/lsqGrid.js"></script>
+	<script src="./assets/js/lsq/lsqPaging.js"></script>
 	
 	<script type="text/javascript" src="./assets/js/SyntaxHighlighter-3.0.83/scripts/XRegExp.js"></script> 
 	<!-- XRegExp is bundled with the final shCore.js during build -->
@@ -238,8 +226,19 @@
 		SyntaxHighlighter.all();
 	</script>
 
-    <script>
-    </script>
+    <script type="text/javascript">
+		$(function() {
+			
+		   $('#lsqPaging_demo').lsqPaging({
+		        "start" : 59,
+		        "limit" : 15,
+		        "totalCount" : 300,
+		        "displayCount" : 9,
+		        "trigger" : function(page) {
+		            alert(page);
+		    }})
+		})
+	</script>
 
   </body>
 </html>
