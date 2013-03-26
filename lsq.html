@@ -73,9 +73,10 @@
       <div class="span3 bc-submenu-div">
         <ul class="nav bc-submenu" data-spy="affix" style="padding-top: 30px;">
 			<li><a href="#overview">Overview</a></li>
-			<li><a href="#lsq_sting">lsq.string</a></li>
-			<li><a href="#lsq_form">lsq.form</a></li>
-			<li><a href="#lsq_utils">lsq.utils</a></li>
+			<li><a href="#lsq_ObjectUtils">lsq.ObjectUtils</a></li>
+			<li><a href="#lsq_StringUtils">lsq.StringUtils</a></li>
+			<li><a href="#lsq_FormUtils">lsq.FormUtils</a></li>
+			<li><a href="#lsq_WindowUtils">lsq.WindowUtils</a></li>
 			<li><a href="#lsq_ajax">lsq.ajax</a></li>
 			<li><a href="#lsq_cm">lsq.cm</a></li>
         </ul>
@@ -91,8 +92,59 @@
           <p>jQuery Plugin.</p>
         </section>
         
-		<section id="lsq_sting">
-			<h1>lsq.string <small>- 문자관련 유틸리티</small> </h1>
+     	<section id="lsq_ObjectUtils">
+			<h1>lsq.ObjectUtils <small>- 자바스크립트 오브젝트 유틸</small> </h1>
+			<hr>
+			<h4>Methods</h4>
+			<table class="table table-bordered table-striped">
+				<thead> <tr>
+						<th>Return</th>
+						<th>Method</th>
+						<th>Description</th>
+				</tr> </thead>
+				<tbody>
+					<tr>
+						<td>boolean</td>
+						<td>isObject(obj)</td>
+                        <td>현재 객체가 자바스크립트 오브젝트인지 검사</td>
+					</tr>
+					<tr>
+						<td>boolean</td>
+						<td>isNull(obj)</td>
+                        <td>현재 객체가 Null 인지 검사</td>
+					</tr>
+					<tr>
+						<td>boolean</td>
+						<td>isUndefined(obj)</td>
+                        <td>현재 객체가 Undefined 인지 검사</td>
+					</tr>
+					<tr>
+						<td>boolean</td>
+						<td>isArray(obj)</td>
+                        <td>현재 객체가 배열인지 검사</td>
+					</tr>
+
+					<tr>
+						<td>boolean</td>
+						<td>isString(obj)</td>
+                        <td>현재 객체가 문자열인지 검사</td>
+					</tr>
+					<tr>
+						<td>boolean</td>
+						<td>isBoolean(obj)</td>
+                        <td>현재 객체가 Boolean 인지 검사</td>
+					</tr>
+					<tr>
+						<td>boolean</td>
+						<td>isNumber(obj)</td>
+                              <td>현재 오브젝트가 숫자인지 검사</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+        
+		<section id="lsq_StringUtils">
+			<h1>lsq.StringUtils <small>- 문자관련 유틸리티</small> </h1>
 			<hr>
 			<h4>Methods</h4>
 			<table class="table table-bordered table-striped">
@@ -111,10 +163,10 @@
 			</table>
 		</section>
 
-		<section id="lsq_form">
-			<h1>lsq.form <small>- 폼 관련 유틸리티</small></h1>
+		<section id="lsq_FormUtils">
+			<h1>lsq.FormUtils <small>- 폼 관련 유틸리티</small></h1>
             <hr>
-            <h4>Methods</h4>
+            <h4>1. SelectBox</h4>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -126,28 +178,35 @@
                 <tbody>
                     <tr>
                         <td>void</td>
-                        <td>lsq.form.select.clear(elementId)</td>
-                        <td>셀렉트박스 초기화</td>
+                        <td>lsq.FormUtils.SelectBox.bind(elementId, dataArray, valueProperty, textProperty)</td>
+                        <td>[object Array]로 셀렉트박스 옵션들을 추가</td>
                     </tr>
                     <tr>
                         <td>void</td>
-                        <td>lsq.form.select.addOption(elementId, value, text)</td>
+                        <td>lsq.FormUtils.SelectBox.add(elementId, value, text)</td>
                         <td>셀렉트박스 옵션 추가</td>
                     </tr>
                     <tr>
                         <td>void</td>
-                        <td>lsq.form.select.bindOptions(elementId, dataArray, valueProperty, textProperty)</td>
-                        <td>jsonObject Array로 셀렉트박스 옵션들을 추가</td>
+                        <td>lsq.FormUtils.SelectBox.clear(elementId)</td>
+                        <td>셀렉트박스 초기화</td>
                     </tr>
                 </tbody>
             </table>
+            <h4># SelectBox Example</h4>
+            <div><select id="selectboxEx1"></select></div>
+            <div>
+            	<Button type="button" id="selectboxEx1_btnBind" class="btn">bind</Button>
+            	<Button type="button" id="selectboxEx1_add" class="btn">add</Button>
+            	<Button type="button" id="selectboxEx1_clear" class="btn">clear</Button>
+           	</div>
 
 		</section>
 
-                <section id="lsq_utils">
+                <section id="lsq_WindowUtils">
 
                    <h1>
-                        lsq.utils <small>- 일반 유틸리티</small>
+                        lsq.WindowUtils <small>- client window Utils (Browser)</small>
                     </h1>
                     <hr>
                     <h4>Methods</h4>
@@ -161,14 +220,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>boolean</td>
-                                <td>lsq.utils.isArray(obj)</td>
-                                <td>입력한 오브젝트가 Array인지 검사</td>
-                            </tr>
-                            <tr>
                                 <td>string</td>
                                 <td>getParameterByName(name)</td>
-                                <td>입력한 이름의 값을 QueryString에서 가지고 옴.</td>
+                                <td>입력한 이름의 값을 QueryString에서 가지고 옴. 복수개의 값이 있을 경우 첫번째 값을 불러옴.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -366,6 +420,8 @@ testCM.del('123');
 		
 		SyntaxHighlighter.all();
 	</script>
+	
+	<script type="text/javascript" src="lsq.app.js"></script>
 
     <script>
     </script>

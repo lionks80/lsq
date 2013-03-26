@@ -2,42 +2,70 @@ function lsq() {
 }
 
 /**
- * lsq.utils
+ * lsq.ObjectUtils
+ * ==================================================================
  */
-lsq.utils = {};
-lsq.utils.isArray = function(obj) {
-	return Object.prototype.toString.call(obj) == '[object Array]';
+// Constructor
+lsq.ObjectUtils = {};
+// isObject
+lsq.ObjectUtils.isObject = function(obj) {
+	return Object.prototype.toString.call(obj) == "[object Object]";
 };
-lsq.utils.isNumber = function(obj) {
+// isNull
+lsq.ObjectUtils.isNull = function(obj) {
+	return Object.prototype.toString.call(obj) == "[object Null]";
+};
+// isUndefined
+lsq.ObjectUtils.isUndefined = function(obj) {
+	return Object.prototype.toString.call(obj) == "[object Undefined]";
+};
+// isArray
+lsq.ObjectUtils.isArray = function(obj) {
+	return Object.prototype.toString.call(obj) == "[object Array]";
+};
+// isString
+lsq.ObjectUtils.isString = function(obj) {
+	return Object.prototype.toString.call(obj) == "[object String]";
+};
+// isBoolean
+lsq.ObjectUtils.isBoolean = function(obj) {
+	return Object.prototype.toString.call(obj) == "[object Boolean]";
+};
+// isNumber
+lsq.ObjectUtils.isNumber = function(obj) {
 	obj += ''; // 문자열로 변환
-	obj = obj.replace(/^\s*|\s*$/g, ''); // 좌우 공백 제거
 	if (obj == '' || isNaN(obj))
 		return false;
 	return true;
-
 };
 
-lsq.string = {};
-lsq.string.hasText = function(str) {
-	return !(str == null || str.length == 0);
+/**
+ * lsq.StringUtils
+ * ==================================================================
+ */
+// Constructor
+lsq.StringUtils = {};
+// check has text
+lsq.StringUtils.hasText = function(str) {
+
+	if (lsq.ObjectUtils.isNumber(str) || lsq.ObjectUtils.isBoolean(str)) {
+		return true;
+	}
+	if (lsq.ObjectUtils.isString(str) == false) {
+		return false;
+	} else {
+		return !(str.length == 0);
+	}
 };
 
-lsq.form = {};
-lsq.form.select = {};
+/**
+ * lsq.FormUtils
+ * ==================================================================
+ */
+lsq.FormUtils = {};
+lsq.FormUtils.SelectBox = {};
 
-lsq.form.select.clear = function(elementId) {
-	$('#' + elementId).find('option').remove().end();
-};
-
-lsq.form.select.addOption = function(elementId, value, text) {
-
-	var op = document.createElement("option");
-	op.value = dataArray[i][valueProperty];
-	op.text = dataArray[i][textProperty];
-	document.getElementById(elementId).add(op);
-};
-
-lsq.form.select.bindOptions = function(elementId, dataArray, valueProperty,
+lsq.FormUtils.SelectBox.bind = function(elementId, dataArray, valueProperty,
 		textProperty) {
 
 	for ( var i = 0; i < dataArray.length; i++) {
@@ -48,13 +76,28 @@ lsq.form.select.bindOptions = function(elementId, dataArray, valueProperty,
 	}
 };
 
+lsq.FormUtils.SelectBox.add = function(elementId, value, text) {
+
+	var op = document.createElement("option");
+	op.value = value;
+	op.text = text;
+	document.getElementById(elementId).add(op);
+};
+
+lsq.FormUtils.SelectBox.clear = function(elementId) {
+	$('#' + elementId).find('option').remove().end();
+};
+
+
+
 /**
- * QueryString으로 부터 파라미터의 값을 가지고 옴
- * 
- * @param name
- *            파라미터 명
+ * lsq.WindowUtils
+ * ==================================================================
  */
-lsq.utils.getParameterByName = function(name) {
+lsq.WindowUtils = {};
+
+// QueryString으로 부터 파라미터의 값을 가지고 옴
+lsq.WindowUtils.getParameterByName = function(name) {
 	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
 	var regexS = "[\\?&]" + name + "=([^&#]*)";
 	var regex = new RegExp(regexS);
