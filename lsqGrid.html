@@ -29,7 +29,7 @@
 
   </head>
 
-  <body data-spy="scroll" data-target=".bc-submenu-div" data-twttr-rendered="true">
+  <body data-spy="scroll" data-target=".lsq-submenu-div" data-twttr-rendered="true">
 
     <!-- Navbar
     ================================================== -->
@@ -42,36 +42,40 @@
        		</div>
         	<div class="span9">
 
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          
-          <div class="nav-collapse collapse">
-            <ul class="nav navbar-left-align">
-				<li><a href="./index.html">Home</a></li>
-				<li><a href="./lsq.html">lsq</a></li>
-				<li class="active"><a href="./lsqGrid.html">lsqGrid</a></li>
-				<li><a href="./lsqPaging.html">lsqPaging</a></li>
-            </ul>
-          </div>
-        </div>
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+      
+				<div class="nav-collapse collapse">
+					<ul class="nav navbar-left-align">
+						<li><a href="./index.html">Home</a></li>
+						<li><a href="./lsq.html">lsq</a></li>
+						<li class="active"><a href="./lsqGrid.html">lsqGrid</a></li>
+						<li><a href="./lsqPaging.html">lsqPaging</a></li>
+					</ul>
+				</div>
+				<div style="padding-top: 10px; float: right;">
+					<a href="https://github.com/lionks80/lsq" style="vertical-align: bottom; text-decoration: none;"><img src="./assets/img/blacktocat.png" style="height: 20px;"/> GitHub</a>
+				</div>
+			</div>
       </div>
       
               	</div>
         </div>
     </div>
 
-	<!-- PAGE CONTENTS
+
+	<!--/ PAGE CONTENTS
 	================================================== -->
 	<div class="container">
 
     <!-- Docs nav
     ================================================== -->
     <div class="row">
-      <div class="span3 bc-submenu-div">
-        <ul class="nav bc-submenu" data-spy="affix" style="padding-top: 30px;">
+      <div class="span3 lsq-submenu-div">
+        <ul class="nav lsq-submenu" data-spy="affix" style="padding-top: 30px;">
             <li><a href="#overview">Overview</a></li>
             <li><a href="#demo1">demo1 - no select</a></li>
             <li><a href="#demo2">demo2 - single select</a></li>
@@ -94,19 +98,31 @@
 
 <!-- SIMPLE DEMO -->
 <section id="demo1">
-    <h2>Demo1 <small>- no select</small></h2><hr>
+	<h2>Demo1 <small>- no select</small></h2><hr>
+	<div class="lsq-docs-example">
+	
+	    <div id="lsqGrid_demo1"></div>
+	    <div>
+	        <h5>test</h5>
+	        <ul><li>headerAlign : check ID header align</li></ul>
+	        <ul><li>dataAlign : check Name rows align</li></ul>
+	        <ul><li>rowClick : check row click Event</li></ul>
+	        <ul><li><button id="btn_demo1_clear">clear Test</button></li></ul>
+	        <ul><li><button id="btn_demo1_dataBind">dataBind Test</button></li></ul>
+	    </div>
+	</div>
     <h3>Example Data</h3>
-    <pre class="brush : js;">
-    // Sample Data
-    var people = [ { "id" : 1, "name" : '이철수', "age" : 21 },
-                   { "id" : 2, "name" : '김영희', "age" : 33 }, 
-                   { "id" : 3, "name" : '장동민', "age" : 24 }, 
-                   { "id" : 4, "name" : '홍길동', "age" : 40 }, 
-                   { "id" : 5, "name" : '이순신', "age" : 30 }, 
-                   { "id" : 6, "name" : '조악필', "age" : 20 } ];
-    </pre>
+<pre class="brush : js;">
+// Sample Data
+var people = [ { "id" : 1, "name" : '이철수', "age" : 21 },
+               { "id" : 2, "name" : '김영희', "age" : 33 }, 
+               { "id" : 3, "name" : '장동민', "age" : 24 }, 
+               { "id" : 4, "name" : '홍길동', "age" : 40 }, 
+               { "id" : 5, "name" : '이순신', "age" : 30 }, 
+               { "id" : 6, "name" : '조악필', "age" : 20 } ];
+</pre>
 
-    <h3>Create Grid & Data Bind</h3>
+    <h3>Create Grid &amp; Data Bind</h3>
     <pre class="brush : js;">
     /** DEMO1 **/
     // Create Grid
@@ -141,148 +157,83 @@
         $('#lsqGrid_demo1').lsqGrid('dataBind', people);
     })
     </pre>
-	<h3>Demo1 - Result</h3>
-	<div class="well">
-	    <div id="lsqGrid_demo1"></div>
-	    <div>
-	        <h5>test</h5>
-	        <ul><li>headerAlign : check ID header align</li></ul>
-	        <ul><li>dataAlign : check Name rows align</li></ul>
-	        <ul><li>rowClick : check row click Event</li></ul>
-	        <ul><li><button id="btn_demo1_clear">clear Test</button></li></ul>
-	        <ul><li><button id="btn_demo1_dataBind">dataBind Test</button></li></ul>
-	    </div>
-	</div>
 </section>
 
 <!-- Single Select DEMO -->
 <section id="demo2">
-<h2>Demo2  <small>- single select</small></h2><hr>
+	<h2>Demo2  <small>- single select</small></h2><hr>
+	<div class="lsq-docs-example">
+		<div id="lsqGrid_demo2"></div>
+		<br />
+		<div id="lsqGrid_demo2_selectChange"></div>
+		<div>
+		    <h5>test</h5>
+		    <ul><li>selectChange : check selectChange Event</li></ul>
+		    <ul><li>row No : check how can make row number</li></ul>
+		</div>
+	</div>
     <h3>Example Data</h3>
-    <pre class="brush : js;">
-    // Sample Data
-    var people = [ { "id" : 1, "name" : '이철수', "age" : 21 },
-                   { "id" : 2, "name" : '김영희', "age" : 33 }, 
-                   { "id" : 3, "name" : '장동민', "age" : 24 }, 
-                   { "id" : 4, "name" : '홍길동', "age" : 40 }, 
-                   { "id" : 5, "name" : '이순신', "age" : 30 }, 
-                   { "id" : 6, "name" : '조악필', "age" : 20 } ];
-    </pre>
+<pre class="brush : js;">
+// Sample Data
+var people = [ { "id" : 1, "name" : '이철수', "age" : 21 },
+               { "id" : 2, "name" : '김영희', "age" : 33 }, 
+               { "id" : 3, "name" : '장동민', "age" : 24 }, 
+               { "id" : 4, "name" : '홍길동', "age" : 40 }, 
+               { "id" : 5, "name" : '이순신', "age" : 30 }, 
+               { "id" : 6, "name" : '조악필', "age" : 20 } ];
+</pre>
 
-    <h3>Create Grid & Data Bind</h3>
-    <pre class="brush : js;">
-    /** DEMO2 **/
-    var num = 100;
-    var ASC = true;
-    // Create Grid
-    $('#lsqGrid_demo2').lsqGrid({
-        columns : [ {
-            header : '#',
-            headerAlign : 'center',
-            dataAlign : 'center',
-            width : 50,
-            render : function(record, rowIdx) {
-                
-                if (ASC) {
-                    return num - rowIdx;
-                } else {
-                    return num + rowIdx;
-                }
-                
+    <h3>Create Grid &amp; Data Bind</h3>
+<pre class="brush : js;">
+/** DEMO2 **/
+var num = 100;
+var ASC = true;
+// Create Grid
+$('#lsqGrid_demo2').lsqGrid({
+    columns : [ {
+        header : '#',
+        headerAlign : 'center',
+        dataAlign : 'center',
+        width : 50,
+        render : function(record, rowIdx) {
+            
+            if (ASC) {
+                return num - rowIdx;
+            } else {
+                return num + rowIdx;
             }
-        },{
-            header : 'ID',
-            dataIndex : 'id'
-        }, {
-            header : 'Name',
-            dataIndex : 'name'
-        }, {
-            header : 'Age',
-           render : function(record, rowIdx) {
-               return record.age + ' 세';
-           }
-        } ],
-        useSelect : true,
-        multiSelect : false,
-        listener : {
-            selectChange : function(selectedRecords) {
-                $('#lsqGrid_demo2_selectChange').text('selected: ' + selectedRecords[0].name);
-            }
+            
         }
-    });
-    
-    // Data Bind
-    $('#lsqGrid_demo2').lsqGrid('dataBind', people);
-    </pre>
-    <h3>Demo2 - Result</h3>
-    <div class="well">
-        <div id="lsqGrid_demo2"></div>
-        <div id="lsqGrid_demo2_selectChange"></div>
-        <div>
-            <h5>test</h5>
-            <ul><li>selectChange : check selectChange Event</li></ul>
-            <ul><li>row No : check how can make row number</li></ul>
-        </div>
-    </div>
+    },{
+        header : 'ID',
+        dataIndex : 'id'
+    }, {
+        header : 'Name',
+        dataIndex : 'name'
+    }, {
+        header : 'Age',
+       render : function(record, rowIdx) {
+           return record.age + ' 세';
+       }
+    } ],
+    useSelect : true,
+    multiSelect : false,
+    listener : {
+        selectChange : function(selectedRecords) {
+            $('#lsqGrid_demo2_selectChange').text('selected: ' + selectedRecords[0].name);
+        }
+    }
+});
+
+// Data Bind
+$('#lsqGrid_demo2').lsqGrid('dataBind', people);
+</pre>
 </section>
 
 <!-- Multi Select DEMO -->
 <section id="demo3">
-<h2>Demo3 <small>- multi select</small></h2><hr>
-    <h3>Example Data</h3>
-    <pre class="brush : js;">
-    // Sample Data
-    var people = [ { "id" : 1, "name" : '이철수', "age" : 21 },
-                   { "id" : 2, "name" : '김영희', "age" : 33 }, 
-                   { "id" : 3, "name" : '장동민', "age" : 24 }, 
-                   { "id" : 4, "name" : '홍길동', "age" : 40 }, 
-                   { "id" : 5, "name" : '이순신', "age" : 30 }, 
-                   { "id" : 6, "name" : '조악필', "age" : 20 } ];
-    </pre>
-
-    <h3>Create Grid & Data Bind</h3>
-    <pre class="brush : css;">
-        /* add css class */
-	    .selected { background-color: #00AAEE; }
-    </pre>
-    <pre class="brush : js;">
-    /** DEMO3 **/
-    // Create Grid
-    $('#lsqGrid_demo3').lsqGrid({
-        columns : [ {
-            header : 'ID',
-            dataIndex : 'id'
-        }, {
-            header : 'Name',
-            dataIndex : 'name'
-        }, {
-            header : 'Age',
-           render : function(record, rowIdx) {
-               return record.age + ' 세';
-           }
-        } ],
-        cssClassTable : ["table", "table-bordered"],
-        cssClassRowSelected : "selected",
-        useSelect : true,
-        multiSelect : true
-    });
-    
-    // Data Bind
-    $('#lsqGrid_demo3').lsqGrid('dataBind', people);
-    $('#btn_demo3_getSelectedRecords').click(function() {
-        var names = '';
-        
-        var selectedRecords = $('#lsqGrid_demo3').lsqGrid('getSelectedRecords');
-        
-        for (var i = 0 ; i < selectedRecords.length ; i++ ) {
-            names += '[' + selectedRecords[i].name + ']';
-        }
-        
-        alert(names);
-    });
-    </pre>
-    <h3>Demo3 - Result</h3>
-    <div class="well">
+	<h2>Demo3 <small>- multi select</small></h2><hr>
+	<div class="lsq-docs-example">
         <div id="lsqGrid_demo3"></div>
         <div>
             <h5>test</h5>
@@ -292,42 +243,92 @@
             <ul><li>render: check age column render</li></ul>
             <ul><li><button id="btn_demo3_getSelectedRecords">getSelectedRecordMethod Test</button></li></ul>
         </div>
-    </div>
-</section>
+	</div>
+    <h3>Example Data</h3>
+    <pre class="brush : js;">
+    // Sample Data
+    var people = [ { "id" : 1, "name" : '이철수', "age" : 21 },
+                   { "id" : 2, "name" : '김영희', "age" : 33 }, 
+                   { "id" : 3, "name" : '장동민', "age" : 24 }, 
+                   { "id" : 4, "name" : '홍길동', "age" : 40 }, 
+                   { "id" : 5, "name" : '이순신', "age" : 30 }, 
+                   { "id" : 6, "name" : '조악필', "age" : 20 } ];
+    </pre>
+
+    <h3>Create Grid &amp; Data Bind</h3>
+<pre class="brush : css;">
+    /* add css class */
+ .selected { background-color: #00AAEE; }
+</pre>
+<pre class="brush : js;">
+/** DEMO3 **/
+// Create Grid
+$('#lsqGrid_demo3').lsqGrid({
+    columns : [ {
+        header : 'ID',
+        dataIndex : 'id'
+    }, {
+        header : 'Name',
+        dataIndex : 'name'
+    }, {
+        header : 'Age',
+       render : function(record, rowIdx) {
+           return record.age + ' 세';
+       }
+    } ],
+    cssClassTable : ["table", "table-bordered"],
+    cssClassRowSelected : "selected",
+    useSelect : true,
+    multiSelect : true
+});
+
+// Data Bind
+$('#lsqGrid_demo3').lsqGrid('dataBind', people);
+$('#btn_demo3_getSelectedRecords').click(function() {
+    var names = '';
+    
+    var selectedRecords = $('#lsqGrid_demo3').lsqGrid('getSelectedRecords');
+    
+    for (var i = 0 ; i < selectedRecords.length ; i++ ) {
+        names += '[' + selectedRecords[i].name + ']';
+    }
+    
+    alert(names);
+});
+</pre>
+	</section>
 
 <br><br>
 <h1>Usage</h1><hr>
 <section id="install">
     <h2>Install</h2><hr>
-    <pre class="brush : html">
+<pre class="brush : html">
+<!-- 만약 사용자 정의의 테이블 css를 사용할 경우 로드하지 않아도 됨 -->
 		
-		<!-- 만약 사용자 정의의 테이블 css를 사용할 경우 로드하지 않아도 됨 -->
-		
-		<link type="text/css" rel="stylesheet" href="lsqGrid.css"/>
-		
-		<script src="lsqGrid.js"></script>
-    </pre>
+&lt;link type="text/css" rel="stylesheet" href="lsqGrid.css"/&gt;
+&lt;script src="lsqGrid.js"&gt;&lt;/script&gt;
+</pre>
 </section>
 <section id="create_grid">
 
-    <h2>Create</h2><hr>
+    <h2>Create Grid</h2><hr>
     <pre class="brush : js;">$('target').lsqGrid(options)</pre>
     <h3>default options</h3>
-    <pre class="brush : js;">
-    {
-        columns : null,
-        cssClassTable : ["lsqGrid"],
-        cssClassRowSelected : "selected",
-        useSelect : false,
-        multiSelect : false,
-        listener : {
-            rowClick : function(rowIdx, record) {
-            },
-            selectChange : function(selectedRecords) {
-            }
+<pre class="brush : js;">
+{
+    columns : null,
+    cssClassTable : ["lsqGrid"],
+    cssClassRowSelected : "selected",
+    useSelect : false,
+    multiSelect : false,
+    listener : {
+        rowClick : function(rowIdx, record) {
+        },
+        selectChange : function(selectedRecords) {
         }
     }
-    </pre>
+}
+</pre>
    <h3>options</h3>
     <table class="table table-bordered table-striped">
         <thead>

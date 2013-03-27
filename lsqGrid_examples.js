@@ -35,10 +35,10 @@ $(function() {
 	$('#lsqGrid_demo1').lsqGrid('dataBind', people);
 	$('#btn_demo1_clear').click(function() {
 		$('#lsqGrid_demo1').lsqGrid('clear');
-	})
+	});
 	$('#btn_demo1_dataBind').click(function() {
 		$('#lsqGrid_demo1').lsqGrid('dataBind', people);
-	})
+	});
 	
 	
 	/** DEMO2 **/

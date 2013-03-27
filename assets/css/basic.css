@@ -42,10 +42,10 @@ body > .navbar .brand:hover {
   text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
 }
 
-/* bc-submenu for Docs
+/* lsq-submenu for Docs
 -------------------------------------------------- */
 
-.bc-submenu {
+.lsq-submenu {
   width: 190px;
   margin: 0 0 0;
   padding: 0;
@@ -58,31 +58,31 @@ body > .navbar .brand:hover {
           box-shadow: 0 1px 4px rgba(0,0,0,.065);
 }
 
-.bc-submenu > .active > a,
-.bc-submenu > .active > a:hover,
-.bc-submenu > .active > a:focus {
+.lsq-submenu > .active > a,
+.lsq-submenu > .active > a:hover,
+.lsq-submenu > .active > a:focus {
   color: #ffffff;
   background-color: #0088cc;
 }
 
-.bc-submenu > li > a {
+.lsq-submenu > li > a {
   display: block;
   width: 190px \9;
   margin: 0 0 -1px;
   padding: 8px 14px;
   border: 1px solid #e5e5e5;
 }
-.bc-submenu > li:first-child > a {
+.lsq-submenu > li:first-child > a {
   -webkit-border-radius: 6px 6px 0 0;
      -moz-border-radius: 6px 6px 0 0;
           border-radius: 6px 6px 0 0;
 }
-.bc-submenu > li:last-child > a {
+.lsq-submenu > li:last-child > a {
   -webkit-border-radius: 0 0 6px 6px;
      -moz-border-radius: 0 0 6px 6px;
           border-radius: 0 0 6px 6px;
 }
-.bc-submenu > .active > a {
+.lsq-submenu > .active > a {
   position: relative;
   z-index: 2;
   padding: 9px 15px;
@@ -93,27 +93,27 @@ body > .navbar .brand:hover {
           box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
 }
 /* Chevrons */
-.bc-submenu .icon-chevron-right {
+.lsq-submenu .icon-chevron-right {
   float: right;
   margin-top: 2px;
   margin-right: -6px;
   opacity: .25;
 }
-.bc-submenu > li > a:hover {
+.lsq-submenu > li > a:hover {
   background-color: #f5f5f5; 
 }
-.bc-submenu a:hover .icon-chevron-right {
+.lsq-submenu a:hover .icon-chevron-right {
   opacity: .5;
 }
-.bc-submenu .active .icon-chevron-right,
-.bc-submenu .active a:hover .icon-chevron-right {
+.lsq-submenu .active .icon-chevron-right,
+.lsq-submenu .active a:hover .icon-chevron-right {
   background-image: url(../js/bootstrap/img/glyphicons-halflings-white.png);
   opacity: 1;
 }
-.bc-submenu.affix {
+.lsq-submenu.affix {
   top: 40px;
 }
-.bc-submenu.affix-bottom {
+.lsq-submenu.affix-bottom {
   position: absolute;
   top: auto;
   bottom: 270px;
@@ -150,4 +150,40 @@ body > .navbar .brand:hover {
 
 .lsqGrid tbody td {
 	padding: 8px;
+}
+
+/* Base class */
+.lsq-docs-example {
+  position: relative;
+  margin: 15px 0;
+  padding: 39px 19px 14px;
+  *padding-top: 19px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+/* Echo out a label for the example */
+.lsq-docs-example:after {
+  content: "Example";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  color: #9da0a4;
+  -webkit-border-radius: 4px 0 4px 0;
+     -moz-border-radius: 4px 0 4px 0;
+          border-radius: 4px 0 4px 0;
+}
+
+/* Remove spacing between an example and it's code */
+.lsq-docs-example + .prettyprint {
+  margin-top: -20px;
+  padding-top: 15px;
 }
