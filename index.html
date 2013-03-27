@@ -1,62 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Bootstrap, from Twitter</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>Javascript · Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<!-- Le styles -->
-<link href="./assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-<style type="text/css">
-.sidebar-nav {
-	padding: 9px 0;
-}
-</style>
-<link href="./assets/bootstrap/css/bootstrap-responsive.css"
-	rel="stylesheet">
+    <!-- Le styles -->
+    <link href="assets/js/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/basic.css" rel="stylesheet">
+    <!-- <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"> -->
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./assets/js/SyntaxHighlighter-3.0.83/styles/shCore.css"/>
+	<link type="text/css" rel="Stylesheet" href="./assets/js/SyntaxHighlighter-3.0.83/styles/shThemeDefault.css" />
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
     <![endif]-->
 
-</head>
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
 
-<body>
+  </head>
 
-	<!--  COMMON HEADER -->
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-			     
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a> 
-				<a class="brand" href="./index.html">[ lsq-lib ]</a>
-	            <p class="navbar-text pull-right">
-	               <a href="https://github.com/lionks80/lsq"><img src="./assets/img/blacktocat.png" height="10"> GitHub</a>
-                </p>
-				<div class="nav-collapse collapse">
-					<ul class="nav">
-						<li class="active"><a href="./index.html">Home</a></li>
-						<li><a href="./lsq.html">lsq</a></li>
-						<li><a href="./lsqGrid.html">lsqGrid</a></li>
-						<li><a href="./lsqPaging.html">lsqPaging</a></li>
-					</ul>
-				</div>
-				<!--/.nav-collapse -->
-			</div>
-		</div>
-	</div>
+  <body data-spy="scroll" data-target=".bc-submenu-div" data-twttr-rendered="true">
 
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse  navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+        <div class="row">
+        	<div class="span3">
+        		<a class="brand" href="./index.html">[ lsq-lib ]</a>
+       		</div>
+        	<div class="span9">
+
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          
+          <div class="nav-collapse collapse">
+            <ul class="nav navbar-left-align">
+				<li class="active"><a href="./index.html">Home</a></li>
+				<li><a href="./lsq.html">lsq</a></li>
+				<li><a href="./lsqGrid.html">lsqGrid</a></li>
+				<li><a href="./lsqPaging.html">lsqPaging</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+              	</div>
+        </div>
+    </div>
+
+
+	<!-- PAGE CONTENTS
+	================================================== -->
 	<div class="hero-unit">
 		<div class="container">
 			<h1>lsq-lib</h1>
-			<p>link4h javascript & jquery library.</p>
+			<p>link4h javascript &amp; jquery library.</p>
 			<p>
 				<a class="btn btn-primary" href="https://github.com/lionks80/lsq/zipball/master">Download a .zip file</a> 
 				<a class="btn btn-primary" href="https://github.com/lionks80/lsq/tarball/master">Download a tar.gz file</a> 
@@ -64,13 +77,13 @@
 		</div>
 	</div>
 
-	<!--  COMMON HEADER -->
+	
 
 	<!-- /container -->
 	<div class="container">
 
 		<div class="row-fluid">
-			<div class="span4">
+			<div class="span4 well">
 				<h2>lsq</h2>
 				<p>lsq는 자바스크립트 클래스 오브젝트입니다. lsq는 간단하고 편리한 
 				유틸리티의 집합으로 string, form, ajax, communication manager와 
@@ -80,7 +93,7 @@
 				</p>
 			</div>
 			<!--/span-->
-			<div class="span4">
+			<div class="span4 well">
 				<h2>lsqGrid</h2>
 				<p>lsqGrid는 간단한 테이블 그리드 입니다. 사용자가 지정한 css를 기반으로
 				돌아가기에 어떤 환경에서도 디자인을 적용할 수 있으며 셀렉트, 클릭등의 이벤트를 지원합니다.</p>
@@ -89,7 +102,7 @@
 				</p>
 			</div>
 			<!--/span-->
-			<div class="span4">
+			<div class="span4 well">
 				<h2>lsqPaging</h2>
 				<p>lsqPaging은 페이징 툴바입니다. 사용자가 간단히 기본정보를 입력 후 호출하게 되면
 				자동으로 페이징 툴바를 만들어줍니다. 이때 페이징 버튼 클릭 시 이벤트는 사용자가 트리거로
@@ -101,33 +114,77 @@
 			<!--/span-->
 		</div>
 	</div>
-	<!-- /container -->
+	<!-- /PAGE CONTENTS
+	================================================== -->
 
-	<!-- foot container -->
-	<div class="container">
-		<hr>
-		<footer>
-			<p>&copy; Company 2012</p>
-		</footer>
-	</div>
-	<!-- /container -->
 
-	<!-- Le javascript
+    <!-- Footer
     ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="./assets/jquery.js"></script>
-	<script src="./assets/bootstrap/js/bootstrap-transition.js"></script>
-	<script src="./assets/bootstrap/js/bootstrap-alert.js"></script>
-	<script src="./assets/bootstrap/js/bootstrap-modal.js"></script>
-	<script src="./assets/bootstrap/js/bootstrap-dropdown.js"></script>
-	<script src="./assets/bootstrap/js/bootstrap-scrollspy.js"></script>
-	<script src="./assets/bootstrap/js/bootstrap-tab.js"></script>
-	<script src="./assets/bootstrap/js/bootstrap-tooltip.js"></script>
-	<script src="./assets/bootstrap/js/bootstrap-popover.js"></script>
-	<script src="./assets/bootstrap/js/bootstrap-button.js"></script>
-	<script src="./assets/bootstrap/js/bootstrap-collapse.js"></script>
-	<script src="./assets/bootstrap/js/bootstrap-carousel.js"></script>
-	<script src="./assets/bootstrap/js/bootstrap-typeahead.js"></script>
+    <footer class="footer">
+		<div class="container">
+			<hr>
+			<p>&copy; Link4h 2012</p>
+		</div>
+    </footer>
+   	<!-- /Footer
+    ================================================== -->
 
-</body>
+    <!-- Le javascript
+    ================================================== -->
+    
+    <script src="./assets/js/jquery.js"></script>
+    
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    
+    <script src="assets/js/bootstrap/js/bootstrap.js"></script>
+    <script src="assets/js/holder/holder.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    
+	<script src="./assets/js/lsq/lsq.js"></script>
+	<script src="./assets/js/lsq/lsqGrid.js"></script>
+	<script src="./assets/js/lsq/lsqPaging.js"></script>
+	
+	<script type="text/javascript" src="./assets/js/SyntaxHighlighter-3.0.83/scripts/XRegExp.js"></script> 
+	<!-- XRegExp is bundled with the final shCore.js during build -->
+    <script type="text/javascript" src="./assets/js/SyntaxHighlighter-3.0.83/scripts/shCore.js"></script>
+    <script type="text/javascript" src="./assets/js/SyntaxHighlighter-3.0.83/scripts/shAutoloader.js"></script>
+
+	<script type="text/javascript">
+		SyntaxHighlighter.autoloader(
+			'applescript			./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushAppleScript.js',
+			'actionscript3 as3		./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushAS3.js',
+			'bash shell				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushBash.js',
+			'coldfusion cf			./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushColdFusion.js',
+			'cpp c					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushCpp.js',
+			'c# c-sharp csharp		./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushCSharp.js',
+			'css					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushCss.js',
+			'delphi pascal			./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushDelphi.js',
+			'diff patch pas			./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushDiff.js',
+			'erl erlang				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushErlang.js',
+			'groovy					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushGroovy.js',
+			'java					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushJava.js',
+			'jfx javafx				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushJavaFX.js',
+			'js jscript javascript	./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushJScript.js',
+			'perl pl				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushPerl.js',
+			'php					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushPhp.js',
+			'text plain				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushPlain.js',
+			'py python				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushPython.js',
+			'ruby rails ror rb		./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushRuby.js',
+			'scala					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushScala.js',
+			'sql					./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushSql.js',
+			'vb vbnet				./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushVb.js',
+			'xml xhtml xslt html	./assets/js/SyntaxHighlighter-3.0.83/scripts/shBrushXml.js'
+		);
+
+		SyntaxHighlighter.config.strings.viewSource = "view my source!!!!";
+		SyntaxHighlighter.config.strings.aboutDialog = "kakaka";
+		
+		SyntaxHighlighter.all();
+	</script>
+
+    <script>
+    </script>
+
+  </body>
 </html>
