@@ -14,6 +14,8 @@
 
 			var rowIdx = $(this).attr("rowIdx");
 			var record = gridData[rowIdx];
+			
+			var selectChange = false;
 
 			$(this).click(function() {
 				

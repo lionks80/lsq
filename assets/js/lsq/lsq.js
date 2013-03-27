@@ -88,8 +88,6 @@ lsq.FormUtils.SelectBox.clear = function(elementId) {
 	$('#' + elementId).find('option').remove().end();
 };
 
-
-
 /**
  * lsq.WindowUtils
  * ==================================================================
